@@ -1,70 +1,38 @@
 <?php
-
+ require_once 'libs/Smarty.class.php';
 class CoursesView{
 
     private function encabezado(){
+        $smarty = new Smarty(); 
+        $smarty->assign('base_url', BASE_URL);
+        $smarty->assign('titulo', "IDC - Cursos");
+        $smarty->assign('home', "Home");
+        $smarty->assign('areas', "Areas");
+        $smarty->assign('cursos', "Todos los cursos");
+        $smarty->assign('administrador', "Administrador");
+        $smarty->display('head.tpl');
 
-        $html = '<!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <base href="' . BASE_URL . '">
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-                <title>IDC</title>
-            </head>
-            <body>';
-
-        return $html;
-    }
-
-    public function nav(){
-        echo '
-        <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand"> IDC - Cursos </a>
-        <form action="home" method="get">
-        <a class="btn btn-outline-dark" href="home"> Home </a>
-        </form>
-        <form action="areas" method="get">
-        <a class="btn btn-outline-dark" href="areas"> Areas </a>
-        </form>
-        <form action="cursos" method="get">
-        <a class="btn btn-outline-dark" href="cursos"> Todos los cursos </a>
-        </form>
-        <form action="admin" method="get">
-        <a class="btn btn-outline-dark" href="admin"> Administrador </a>
-        </form>
-        </nav>'; 
     }
 
     public function home(){
         echo $this->encabezado();
-        echo $this->nav();
+        $smarty = new Smarty(); 
+        $smarty->display('home.tpl');   
     }
 
     public function viewAreas($areas){
         echo $this->encabezado();
-        echo $this->nav();
-
-        echo '<ul class="list-group">
-        <li class="list-group-item list-group-item-info border border-dark">Areas</li>';
-
-        echo '<form method="get" action="cursosporarea">';
-           
-        foreach($areas as $area){
-            $id = $area->id_area;
-            echo '
-            <li class="list-group-item">    '.$area->area.'     <a class="btn btn-light" 
-            href="cursosporarea/'.$id.'">Ver Cursos</a></li>
-            </form>';
-        }
-
-        echo ' </ul>';
+        $smarty = new Smarty(); 
+        $smarty->assign('areas', "Areas");
+        $smarty->assign('arreglo', $areas);
+        $smarty->assign('btn', "Ver cursos");
+        $smarty->display('showAreas.tpl');
+        
     }
 
     public function viewCoursesOfArea($cursos){
         echo $this->encabezado();
-        echo $this->nav(); 
+       
 
          $area = $cursos[0]->area; 
 
@@ -101,7 +69,7 @@ class CoursesView{
 
     public function viewAllCourses($cursos){
         echo $this->encabezado();
-        echo $this->nav(); 
+         
 
         echo '<ul class="list-group">
         <li class="list-group-item list-group-item-warning border border-dark">
@@ -135,7 +103,7 @@ class CoursesView{
 
     public function viewDetails($detalle){
         echo $this->encabezado();
-        echo $this->nav();
+        
 
         echo '<ul class="list-group">
         <li class="list-group-item list-group-item-info">
