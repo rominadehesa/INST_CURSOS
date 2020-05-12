@@ -15,8 +15,5 @@
         public function showFormLog(){
             $this->view->viewFormLog();
         }
-        public function showConfiguration(){
-            $this->view->viewConfiguration(); 
-        }
 
     }

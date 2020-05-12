@@ -17,12 +17,5 @@ class AdminView{
         echo $this->encabezado();
             
     }
-    public function viewConfiguration(){
-        echo $this->encabezado();
-
-        echo '<ul class="list-group">
-        <li class="list-group-item list-group-item-danger border border-dark"> Configuracion </li>';
-
-    }
     
 }

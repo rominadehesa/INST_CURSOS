@@ -1,3 +1,4 @@
+<!--Esta plantilla contiene el HEAD y muestra la barra de navegacion-->
  <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -8,24 +9,17 @@
                 <title>{$titulo}</title>
             </head>
             <body>
+
             <div class= "container">
-        <div class="row">
-        <div class="col-12">
-        <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand"> {$titulo} </a>
-        <form action="home" method="get">
-        <a class="btn btn-outline-dark" href="home"> {$home} </a>
-        </form>
-        <form action="areas" method="get">
-        <a class="btn btn-outline-dark" href="areas"> {$areas} </a>
-        </form>
-        <form action="cursos" method="get">
-        <a class="btn btn-outline-dark" href="cursos"> {$cursos} </a>
-        </form>
-        <form action="admin" method="get">
-        <a class="btn btn-outline-dark" href="admin"> {$administrador} </a>
-        </form>
-        </nav>
-        </div>
-        </div>
-</div>
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-light bg-light">
+                            <a class="navbar-brand"> {$titulo} </a>
+                            <a class="btn btn-outline-dark" href="home"> {$home} </a>
+                            <a class="btn btn-outline-dark" href="areas"> {$areas} </a>
+                            <a class="btn btn-outline-dark" href="cursos"> {$cursos} </a>
+                            <a class="btn btn-outline-dark" href="admin"> {$administrador} </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>

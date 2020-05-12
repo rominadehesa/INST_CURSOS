@@ -1,3 +1,4 @@
+<!--Esta plantilla contiene un head y muestra la barra de navegacion del lado del adminitrador-->
 <!DOCTYPE html>
             <html lang="en">
             <head>

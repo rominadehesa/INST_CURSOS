@@ -1,5 +1,5 @@
 <?php
- require_once 'libs/Smarty.class.php';
+    require_once 'libs/Smarty.class.php';
 class CoursesView{
 
     private function encabezado(){
@@ -15,7 +15,7 @@ class CoursesView{
     }
 
     public function home(){
-        echo $this->encabezado();
+        echo $this->encabezado(); //consultar
         $smarty = new Smarty(); 
         $smarty->display('home.tpl');   
     }
@@ -26,94 +26,44 @@ class CoursesView{
         $smarty->assign('areas', "Areas");
         $smarty->assign('arreglo', $areas);
         $smarty->assign('btn', "Ver cursos");
+    
         $smarty->display('showAreas.tpl');
         
     }
 
     public function viewCoursesOfArea($cursos){
         echo $this->encabezado();
-       
-
-         $area = $cursos[0]->area; 
-
-        echo '<ul class="list-group">
-        <li class="list-group-item list-group-item-warning">
-        Cursos por area: </li>';
-
-        echo '<div class="conteiner-fluid"> <div class="row">';
+        $smarty = new Smarty(); 
         
-       
+        $smarty->assign('arreglo', $cursos);
+        $smarty->assign('btn', "Detalles");
+        $smarty->assign('text', " meses de duracion");
+        $smarty->display('showCoursesOfArea.tpl');
 
-        foreach ($cursos as $data) {
-
-            echo '
-            <div class="col-3">
-                <div class="card border-light mb-3" style="max-width: 18rem;">
-                    <div class="card-header list-group-item-info">'.$area.'</div>
-                        <div class="card-body">
-                        <h5 class="card-title">'.$data->curso.'</h5>
-                        <p class="card-text">Duracion:'.$data->duracion.' meses</p>
-                        <form action="detalles" method="get">
-                        <a class="btn btn-outline-dark" href="detalles/'.$data->id_curso.'"> Detalles </a>
-                        </form>
-                        </div>
-                </div>
-            </div>
-            
-            ';
-        }
-
-        echo '</div></div>';
 
     }
 
     public function viewAllCourses($cursos){
         echo $this->encabezado();
-         
 
-        echo '<ul class="list-group">
-        <li class="list-group-item list-group-item-warning border border-dark">
-        Todos los cursos </li>';
-
-        echo '<div class="conteiner-fluid"> <div class="row">';
+        $smarty = new Smarty(); 
+        $smarty->assign('cursos', $cursos);
+        $smarty->assign('btn', "Detalles");
+        $smarty->assign('text', " meses de duracion");
+        $smarty->display('showAllCourses.tpl');
         
-       
-
-        foreach ($cursos as $data) {
-
-        echo '
-        <div class="col-3">
-            <div class="card border-light mb-3 " style="max-width: 18rem;">
-                <div class="card-header">'.$data->area.'</div>
-                    <div class="card-body">
-                    <h5 class="card-title">'.$data->curso.'</h5>
-                    <p class="card-text">Duracion:'.$data->duracion.' meses</p>
-                    <form action="detalles" method="get">
-                    <a class="btn btn-outline-dark" href="detalles/'.$data->id_curso.'"> Detalles </a>
-                    </form>
-                    </div>
-            </div>
-        </div>
-        
-        ';
-        }
-
-        echo '</div></div>';
     }
 
     public function viewDetails($detalle){
         echo $this->encabezado();
+        $smarty = new Smarty(); 
         
-
-        echo '<ul class="list-group">
-        <li class="list-group-item list-group-item-info">
-        Area: '.$detalle->area.' </li>
-        <li class="list-group-item list-group-item-warning">
-        Curso: '.$detalle->curso.' </li>
-        <li class="list-group-item list-group-item-light">
-        '.$detalle->descripcion.' </li>
-        <li class="list-group-item list-group-item-success">
-        Duracion: '.$detalle->duracion.' meses</li>';
+        $smarty->assign('detalle', $detalle);
+        $smarty->assign('a', "Curso: ");
+        $smarty->assign('b', "Area: ");
+        $smarty->assign('c', " meses de duracion");
+        $smarty->display('showDetails.tpl');
+        
     }
 
 }
