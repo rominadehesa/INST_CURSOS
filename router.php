@@ -2,7 +2,8 @@
     require_once 'controllers/courses.controller.php';
     require_once 'controllers/home.controller.php';
     require_once 'controllers/areas.controller.php';
-    require_once 'controllers/admin.controller.php';
+    require_once 'controllers/aut.controller.php';
+
 
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -34,13 +35,9 @@
             $controller = new CoursesController(); 
             $controller->showDetailsCourse($parametros[1]);
         break;
-        case 'admin':
-            $controller = new AdminController();
-            $controller->showFormLog();
-        break;
-        case 'logIn';
-            $controller = new AdminController();
-            $controller->showConfiguration();
+        case 'login':
+            $controller = new AutController();
+            $controller->showLogin();
         break;
         default: 
             echo "404 not found";
