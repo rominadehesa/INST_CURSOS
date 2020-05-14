@@ -30,4 +30,11 @@
         return $areas;
     }
 
+    function delete($id){
+        $db = $this->createConection();
+    
+        $sentencia = $db->prepare("DELETE FROM db_areas WHERE id_area = ?");
+        $sentencia->execute([$id]);
+    }
+
  }

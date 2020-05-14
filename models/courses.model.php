@@ -55,4 +55,11 @@ class CoursesModel{
         return $detalles;
     }
 
+    function delete($id_curso){
+        $db = $this->createConection();
+    
+        $sentencia = $db->prepare('DELETE FROM db_cursos WHERE id_curso = ?');
+        $sentencia->execute([$id_curso]);
+    }
+
 }

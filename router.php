@@ -1,8 +1,8 @@
 <?php
     require_once 'controllers/courses.controller.php';
-    require_once 'controllers/home.controller.php';
     require_once 'controllers/areas.controller.php';
     require_once 'controllers/aut.controller.php';
+    require_once 'controllers/admin.controller.php';
 
 
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -15,17 +15,18 @@
     $parametros = explode('/', $accion);
   
     switch ($parametros[0]) {
+        //acciones publicas de la pagina 
         case 'home':
-            $controller = new HomeController(); 
-            $controller-> showHome();
+            $controller = new CoursesController(); 
+            $controller->showHome();
         break;
         case 'areas':
             $controller = new AreasController();
-            $controller-> showAreas();
+            $controller->showAreas();
         break;
         case 'cursos':
             $controller = new CoursesController();
-            $controller-> showAllCourses();
+            $controller->showAllCourses();
         break;
         case 'cursosporarea':
             $controller = new CoursesController(); 
@@ -35,9 +36,27 @@
             $controller = new CoursesController(); 
             $controller->showDetailsCourse($parametros[1]);
         break;
+        // acciones de autentificacion de usuarios
         case 'login':
             $controller = new AutController();
             $controller->showLogin();
+        break;
+        case 'verify':
+            $controller = new AutController();
+            $controller->verification();
+        break;
+        //acciones privadas (configuracion)
+        case 'administrar':
+            $controller = new AdminController();
+            $controller->administration();
+        break;
+        case 'eliminararea':
+            $controller = new AdminController();
+            $controller->deleteArea($parametros[1]);
+        break;
+        case 'eliminarcurso':
+            $controller = new AdminController();
+            $controller->deleteCourse($parametros[1]);
         break;
         default: 
             echo "404 not found";

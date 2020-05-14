@@ -14,9 +14,9 @@
                     <div class="col-12">
                         <nav class="navbar navbar-light bg-light">
                             <a class="navbar-brand">IDC Administrador</a>
-                            <form action="home" method="get">
+                            
                             <a class="btn btn-outline-dark" href="home">Home</a>
-                            </form>
+                            <a class="btn btn-outline-dark" href="administrar">Configuracion</a>
                         </nav>
                     </div>
                 </div>
