@@ -58,6 +58,16 @@
             $controller = new AdminController();
             $controller->deleteCourse($parametros[1]);
         break;
+        case 'formaddarea':
+            $controller = new AdminController();
+            $controller->showFormAddArea();
+        break;
+
+        case 'agregararea':
+            $controller = new AdminController();
+            $controller->addArea();
+        break;
+
         default: 
             echo "404 not found";
         break;

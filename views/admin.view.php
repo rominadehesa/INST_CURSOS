@@ -16,4 +16,9 @@ class AdminView{
 
         $this->smarty->display('admin.configuration.tpl');
     }
+    public function viewFormArea(){
+
+        $this->smarty->display('formaddarea.tpl');
+
+    }
 }

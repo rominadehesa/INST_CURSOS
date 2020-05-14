@@ -8,7 +8,7 @@
 
             <p class="p-3 mb-2 bg-dark text-white">
             Administar Areas 
-            <a class="btn btn-light" href="agregararea" role="button">Agregar area</a>
+            <a class="btn btn-light" href="formaddarea" role="button">Agregar area</a>
             </p>
 
             {foreach $arrayareas as $area}

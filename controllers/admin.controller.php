@@ -1,6 +1,7 @@
 <?php
     require_once 'views/admin.view.php';
     require_once 'models/areas.model.php'; 
+    require_once 'models/courses.model.php'; 
 
     class AdminController {
 
@@ -29,6 +30,19 @@
             $this->modelCourses->delete($id);
             header('Location: ' . BASE_URL . "administrar");
         }
+
+        public function showFormAddArea(){
+            $this->view->viewFormArea();
+        }
+
+        public function addArea(){
+            $area=$_POST['x'];
+               
+            $this->modelAreas->insertArea($area);
+             
+        }
+
+
 
 
     }
