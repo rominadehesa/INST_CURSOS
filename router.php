@@ -50,22 +50,39 @@
             $controller = new AdminController();
             $controller->administration();
         break;
+        // ABM areas - BAJA
         case 'eliminararea':
             $controller = new AdminController();
             $controller->deleteArea($parametros[1]);
         break;
+        // ABM areas - MODIFICACION
+
+        // ABM areas - ALTA
+        case 'newarea':
+            $controller = new AdminController();
+            $controller->showFormAddArea();
+        break;
+        case 'agregararea':
+            $controller = new AdminController();
+            $controller->addArea();
+        break;
+
+        // ABM cursos - BAJA
         case 'eliminarcurso':
             $controller = new AdminController();
             $controller->deleteCourse($parametros[1]);
         break;
-        case 'formaddarea':
-            $controller = new AdminController();
-            $controller->showFormAddArea();
-        break;
+        
+        // ABM cursos - MODIFICACION
 
-        case 'agregararea':
+        // ABM cursos - ALTA 
+        case 'newcurso':
             $controller = new AdminController();
-            $controller->addArea();
+            $controller->showFormAddCourse();
+        break;
+        case 'agregarcurso':
+            $controller = new AdminController();
+            $controller->addCourse();
         break;
 
         default: 

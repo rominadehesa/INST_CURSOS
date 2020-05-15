@@ -11,6 +11,7 @@
             $this->model = new CoursesModel;
             $this->view = new CoursesView;
         }
+        //home de la pagina
         public function showHome(){
             $this->view->ViewHome(); 
         }

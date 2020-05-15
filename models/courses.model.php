@@ -1,5 +1,5 @@
 <?php 
-
+// Modelo de cursos
 class CoursesModel{
 
     private function createConection() {
@@ -18,7 +18,7 @@ class CoursesModel{
         }
         return $pdo;
     }
-
+    //Trae todos los cursos por area
     public function getCoursesOfArea($id){
         $db = $this->createConection();
 
@@ -30,7 +30,7 @@ class CoursesModel{
         
         return $cursos;
     }
-
+    //Trae todos los cursos
     public function getAllCourses(){
         $db = $this->createConection();
         
@@ -43,7 +43,7 @@ class CoursesModel{
         
         return $cursos;
     }
-
+    //Trae los detalles de un solo curso
     public function getCourse($idcurso){
 
         $db = $this->createConection();
@@ -54,12 +54,13 @@ class CoursesModel{
         $detalles = $sentencia->fetch(PDO::FETCH_OBJ);
         return $detalles;
     }
-
-    function delete($id_curso){
+    //Borra un curso
+    public function delete($id_curso){
         $db = $this->createConection();
     
         $sentencia = $db->prepare('DELETE FROM db_cursos WHERE id_curso = ?');
         $sentencia->execute([$id_curso]);
     }
+
 
 }

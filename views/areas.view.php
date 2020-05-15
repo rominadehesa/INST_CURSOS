@@ -10,7 +10,8 @@
         $this->smarty = new Smarty();
         $this->smarty->assign('base_url', BASE_URL);
     }
-    //vista de todas las areas
+    
+    // vista de todas las areas
     public function viewAreas($areas){
         $this->smarty->assign('arreglo', $areas);
         $this->smarty->display('showAreas.tpl');
