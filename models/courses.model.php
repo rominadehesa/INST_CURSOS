@@ -61,6 +61,12 @@ class CoursesModel{
         $sentencia = $db->prepare('DELETE FROM db_cursos WHERE id_curso = ?');
         $sentencia->execute([$id_curso]);
     }
-
+    //Agrega un curso con su area
+    public function insertCourse($curso, $descripcion, $duracion, $idarea){
+        $db = $this->createConection();
+    
+        $sentencia = $db->prepare("INSERT INTO `db_cursos`(`curso`, `descripcion`, `duracion`, `id_area`) VALUES (?, ?, ?, ?)");
+        $sentencia->execute([$curso, $descripcion, $duracion, $idarea]);
+    }
 
 }

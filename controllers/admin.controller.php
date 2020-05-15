@@ -50,7 +50,8 @@
         }
         //muestra el formulario para agregar un curso
         public function showFormAddCourse(){
-            $this->view->viewFormCourse();
+            $areas=$this->modelAreas->getAllAreas();
+            $this->view->viewFormCourse($areas);
         }
         //agrega un curso
         public function addCourse(){
@@ -59,6 +60,7 @@
             $duracion=$_POST['duracion']; 
             $idarea=$_POST['id_area'];
             
-            echo $curso, $descripcion, $duracion, $idarea;
+            $this->modelCourses->insertCourse($curso, $descripcion, $duracion, $idarea);
+            header('Location: ' . BASE_URL . "administrar");
         }
     }

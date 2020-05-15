@@ -22,7 +22,8 @@
         }
 
         //Vista de ABM de cursos
-        public function viewFormCourse(){
+        public function viewFormCourse($areas){
+            $this->smarty->assign('areas', $areas);
             $this->smarty->display('admin.formaddcourse.tpl');
         }
     }

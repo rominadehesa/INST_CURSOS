@@ -23,7 +23,11 @@
                 </div>
                 <div>
                 <label>Area:</label>
-                <input name="id_area" type="number">
+                <select name="id_area">
+                    {foreach $areas as $area}
+                    <option value="{$area->id_area}">{$area->area}</option>
+                    {/foreach}
+                </select>   
                 </div>
                 <button type="submit" class="btn btn-primary">Agregar</button>  
             </form>
