@@ -2,12 +2,12 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <p class="p-3 mb-2 bg-dark text-white"> Agrege una area </p>
+            <p class="p-3 mb-2 bg-dark text-white"> Agrege un curso </p>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="agregarcurso" method="post">
+            <form action="addcourse" method="post">
                 <div>
                 <label>Nombre del curso: </label>
                 <input name="curso" type="text">

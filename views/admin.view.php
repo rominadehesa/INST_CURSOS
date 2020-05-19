@@ -17,13 +17,24 @@
         }
 
         //Vista de ABM de areas
+
+        //Vista para agregar una area
         public function viewFormArea(){
             $this->smarty->display('admin.formaddarea.tpl');
         }
 
+        //vista para editar una area
+        public function viewFormEditArea($areas){
+            $this->smarty->assign('array', $areas);
+            $this->smarty->display('admin.formeditarea.tpl');
+        }
+
         //Vista de ABM de cursos
+        
+        //Vista para agregar un curso
         public function viewFormCourse($areas){
             $this->smarty->assign('areas', $areas);
             $this->smarty->display('admin.formaddcourse.tpl');
         }
+        
     }

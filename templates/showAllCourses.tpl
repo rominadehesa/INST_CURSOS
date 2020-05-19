@@ -17,7 +17,7 @@
                         <h5 class="card-title">{$data->curso}</h5>
                         <p class="card-text">Duracion: {$data->duracion} meses</p>
                         
-                        <a class="btn btn-outline-dark" href="detalles/{$data->id_curso}">Detalles</a>
+                        <a class="btn btn-outline-dark" href="details/{$data->id_curso}">Detalles</a>
                         
                         </div>
                 </div>

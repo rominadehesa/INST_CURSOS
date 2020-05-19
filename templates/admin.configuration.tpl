@@ -2,20 +2,19 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <p class="p-3 mb-2 bg-dark text-white">Configuracion General </p>
+            <p class="p-3 mb-2 bg-dark text-white">ABM GENERAL</p>
         </div>
         <div class="col-12">
-
             <p class="p-3 mb-2 bg-dark text-white">
-            Administar Areas 
-            <a class="btn btn-light" href="newarea" role="button">Agregar area</a>
+            <a class="btn btn-success" href="newarea" role="button">Nueva Area</a>
+            <a class="btn btn-success float-right" href="editarea" role="button">Editar Area</a>
             </p>
 
             {foreach $arrayareas as $area}
                     <li class="list-group-item">
-                        {$area->area}
-                        <a class="btn btn-light" href="eliminararea/{$area->id_area}" role="button">Borrar</a>
-                        <a class="btn btn-light" href="editararea/{$area->id_area}" role="button">Editar</a>
+                        <p>{$area->area}
+                        <a class="btn btn-light text-danger float-right" href="deletearea/{$area->id_area}" role="button">
+                        Eliminar</a></p>
                     </li>
             {/foreach}
         
@@ -23,14 +22,16 @@
 
         <div class="col-12">
 
-            <p class="p-3 mb-2 bg-dark text-white">Administrar Cursos
-            <a class="btn btn-light" href="newcurso" role="button">Agregar curso</a>
+            <p class="p-3 mb-2 bg-dark text-white">
+            <a class="btn btn-success" href="newcourse" role="button">New Curso</a>
+            </p>
+            
             </p>
             {foreach $arraycursos as $curso}
                     <li class="list-group-item">
-                        {$curso->curso}
-                        <a class="btn btn-light" href="eliminarcurso/{$curso->id_curso}">Borrar</a>
-                        <a class="btn btn-light" href="editarcurso/{$curso->id_curso}">Editar</a>
+                        <p>{$curso->curso}
+                        <a class="btn btn-light text-danger float-right" href="deletecourse/{$curso->id_curso}">Eliminar</a>
+                        <a class="btn btn-light text-dark float-right" href="editcourse/{$curso->id_curso}" role="button">Editar</a></p>
                     </li>
             {/foreach}
         </div>

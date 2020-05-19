@@ -24,15 +24,15 @@
             $controller = new AreasController();
             $controller->showAreas();
         break;
-        case 'cursos':
+        case 'courses':
             $controller = new CoursesController();
             $controller->showAllCourses();
         break;
-        case 'cursosporarea':
+        case 'cuoursesbyarea':
             $controller = new CoursesController(); 
             $controller->coursesOfArea($parametros[1]);
         break;
-        case 'detalles':
+        case 'details':
             $controller = new CoursesController(); 
             $controller->showDetailsCourse($parametros[1]);
         break;
@@ -46,29 +46,36 @@
             $controller->verification();
         break;
         //acciones privadas (configuracion)
-        case 'administrar':
+        case 'administer':
             $controller = new AdminController();
             $controller->administration();
         break;
         // ABM areas - BAJA
-        case 'eliminararea':
+        case 'deletearea':
             $controller = new AdminController();
             $controller->deleteArea($parametros[1]);
         break;
         // ABM areas - MODIFICACION
-
+        case 'editarea':
+            $controller = new AdminController();
+            $controller->showFormEditArea();
+        break;
+        case 'renamearea':
+            $controller = new AdminController();
+            $controller->editArea();
+        break;
         // ABM areas - ALTA
         case 'newarea':
             $controller = new AdminController();
             $controller->showFormAddArea();
         break;
-        case 'agregararea':
+        case 'addarea':
             $controller = new AdminController();
             $controller->addArea();
         break;
 
         // ABM cursos - BAJA
-        case 'eliminarcurso':
+        case 'deletecourse':
             $controller = new AdminController();
             $controller->deleteCourse($parametros[1]);
         break;
@@ -76,15 +83,14 @@
         // ABM cursos - MODIFICACION
 
         // ABM cursos - ALTA 
-        case 'newcurso':
+        case 'newcourse':
             $controller = new AdminController();
             $controller->showFormAddCourse();
         break;
-        case 'agregarcurso':
+        case 'addcourse':
             $controller = new AdminController();
             $controller->addCourse();
         break;
-
         default: 
             echo "404 not found";
         break;

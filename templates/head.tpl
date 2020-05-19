@@ -17,7 +17,7 @@
                             <a class="navbar-brand"> IDC </a>
                             <a class="btn btn-outline-dark" href="home"> Home</a>
                             <a class="btn btn-outline-dark" href="areas"> Areas </a>
-                            <a class="btn btn-outline-dark" href="cursos"> Cursos </a>
+                            <a class="btn btn-outline-dark" href="courses"> Cursos </a>
                             <a class="btn btn-outline-dark" href="login"> Login</a>
                         </nav>
                     </div>

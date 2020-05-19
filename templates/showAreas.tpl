@@ -9,7 +9,7 @@
                <ul class="list-group">  
                     {foreach $arreglo as $area}
                                    <li class="list-group-item"> {$area->area}
-                                        <a class="btn btn-light text-dark float-right" href="cursosporarea/{$area->id_area}" 
+                                        <a class="btn btn-light text-dark float-right" href="cuoursesbyarea/{$area->id_area}" 
                                         role="button"> Ver cursos </a>
                                    </li>
                     {/foreach}

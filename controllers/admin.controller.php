@@ -25,11 +25,6 @@
 
         // ABM AREAS
 
-        //eliminar area
-        public function deleteArea($id){
-            $this->modelAreas->delete($id);
-            header('Location: ' . BASE_URL . "administrar");
-        }
         //muestra el formulario para agregar una area
         public function showFormAddArea(){
             $this->view->viewFormArea();
@@ -38,16 +33,33 @@
         public function addArea(){
             $area=$_POST['x'];
             $this->modelAreas->insertArea($area);
-            header('Location: ' . BASE_URL . "administrar");
+            header('Location: ' . BASE_URL . "administer");
         }
+
+        //eliminar area
+        public function deleteArea($id){
+            $this->modelAreas->delete($id);
+            header('Location: ' . BASE_URL . "administer");
+        }
+
+        // muestra el formulario para editar una area
+        public function showFormEditArea(){
+            $areas = $this->modelAreas->getAllAreas(); 
+            $this->view->viewFormEditArea($areas); 
+        }
+        // edita una area
+        public function editArea(){
+            $id=$_POST['idarea']; 
+            $area=$_POST['area'];
+
+            $this->modelAreas->edit($id, $area);
+            header('Location: ' . BASE_URL . "administer");
+        }
+        
 
         // ABM CURSOS
 
-        //eliminar curso
-        public function deleteCourse($id){
-            $this->modelCourses->delete($id);
-            header('Location: ' . BASE_URL . "administrar");
-        }
+        
         //muestra el formulario para agregar un curso
         public function showFormAddCourse(){
             $areas=$this->modelAreas->getAllAreas();
@@ -61,6 +73,13 @@
             $idarea=$_POST['id_area'];
             
             $this->modelCourses->insertCourse($curso, $descripcion, $duracion, $idarea);
-            header('Location: ' . BASE_URL . "administrar");
+            header('Location: ' . BASE_URL . "administer");
         }
+        //eliminar curso
+        public function deleteCourse($id){
+            $this->modelCourses->delete($id);
+            header('Location: ' . BASE_URL . "administer");
+        }
+
+        
     }
