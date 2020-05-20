@@ -10,8 +10,9 @@ class AutView{
     }
     
     // Vista del formulario para que el usuario pueda loguearse
-    public function ViewFormLogin(){
+    public function ViewFormLogin(){//parametros opcionales, a este metodo lo puedo llamar con o sin parametro
         $this->smarty->display('admin.login.tpl');
     }
     
+
 }

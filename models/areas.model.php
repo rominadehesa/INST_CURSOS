@@ -34,7 +34,7 @@
     public function insertArea($area){
         $db = $this->createConection();
     
-        $sentencia = $db->prepare("INSERT INTO db_areas (`area`) VALUES (?)");
+        $sentencia = $db->prepare("INSERT INTO db_areas (area) VALUES (?)");
         $sentencia->execute([$area]);
     }
 

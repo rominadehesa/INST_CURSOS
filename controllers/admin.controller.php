@@ -33,7 +33,8 @@
         public function addArea(){
             $area=$_POST['x'];
             $this->modelAreas->insertArea($area);
-            header('Location: ' . BASE_URL . "administer");
+            $area;
+            //header('Location: ' . BASE_URL . "administer");
         }
 
         //eliminar area

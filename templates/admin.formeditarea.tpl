@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <p class="p-3 mb-2 bg-dark text-white">Edite un curso</p>
+            <p class="p-3 mb-2 bg-dark text-white">Edite una area</p>
         </div>
     </div>
     <div class="row">
