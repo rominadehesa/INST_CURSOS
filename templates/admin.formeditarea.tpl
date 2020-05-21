@@ -7,19 +7,11 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="renamearea" method="post">
-                <div>
-                <label>Elija la area que quiere editar</label>
-                <select name="idarea">
-                    {foreach $array as $area}
-                    <option value="{$area->id_area}">{$area->area}</option>
-                    {/foreach}
-                </select>
-                </div>
-                <div>
+            <form action="renamearea" method="POST">
                 <label>Renombrar area: </label>
-                <input name="area" type="text">
+                <input name="x" type="text">
                 </div>
+                <input type="hidden" name="id" value="{$id}">
 
                 <button type="submit" class="btn btn-primary">Editar</button>  
             </form>

@@ -13,7 +13,10 @@
                     <li class="list-group-item">
                         <p>{$area->area}
                         <a class="btn btn-light text-danger float-right" href="deletearea/{$area->id_area}" role="button">
-                        Eliminar</a></p>
+                        Eliminar</a>
+                        <a class="btn btn-light text-dark float-right" href="editarea/{$area->id_area}" role="button">
+                        Editar</a>
+                        </p>
                     </li>
             {/foreach}
         
@@ -29,7 +32,8 @@
             {foreach $arraycursos as $curso}
                     <li class="list-group-item">
                         <p>{$curso->curso}
-                        <a class="btn btn-light text-danger float-right" href="deletecourse/{$curso->id_curso}">Eliminar</a></p>
+                        <a class="btn btn-light text-danger float-right" href="deletecourse/{$curso->id_curso}">Eliminar</a>
+                        </p>
                     </li>
             {/foreach}
         </div>
