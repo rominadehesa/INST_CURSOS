@@ -56,8 +56,15 @@
             $controller->deleteArea($parametros[1]);
         break;
         // ABM areas - MODIFICACION
-        
-        // ABM areas - ALTA
+        case 'editarea':
+            $controller = new AdminController();
+            $controller->showFormEditArea($parametros[1]);
+        break;
+        case 'renamearea': 
+            $controller = new AdminController();
+            $controller->editArea();
+        break;
+            // ABM areas - ALTA
         case 'newarea':
             $controller = new AdminController();
             $controller->showFormAddArea();
