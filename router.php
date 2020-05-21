@@ -74,13 +74,7 @@
             $controller->addArea();
         break;
 
-        // ABM cursos - BAJA
-        case 'deletecourse':
-            $controller = new AdminController();
-            $controller->deleteCourse($parametros[1]);
-        break;
         
-        // ABM cursos - MODIFICACION
 
         // ABM cursos - ALTA 
         case 'newcourse':
@@ -90,6 +84,20 @@
         case 'addcourse':
             $controller = new AdminController();
             $controller->addCourse();
+        break;
+        // ABM cursos - BAJA
+        case 'deletecourse':
+            $controller = new AdminController();
+            $controller->deleteCourse($parametros[1]);
+        break;
+        // ABM cursos - MODIFICACION
+        case 'editcourse':
+            $controller = new AdminController();
+            $controller->showFormEditCourse($parametros[1]);
+        break;
+        case 'renamecourse':
+            $controller = new AdminController();
+            $controller->editCourse();
         break;
         default: 
             echo "404 not found";
