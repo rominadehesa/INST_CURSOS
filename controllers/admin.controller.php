@@ -32,9 +32,14 @@
         //agrega un area
         public function addArea(){
             $area=$_POST['x'];
-            $this->modelAreas->insertArea($area);
-            
+            if(!empty($area)){
+                $this->modelAreas->insertArea($area);
             header('Location: ' . BASE_URL . "administer");
+            }
+            else {
+                echo 'campos vacios';
+            }
+            
         }
 
         //eliminar area
@@ -42,10 +47,11 @@
             $this->modelAreas->delete($id);
             header('Location: ' . BASE_URL . "administer");
         }
-        //modificar un area
+        //muestra el formulario para modificar un area
         public function showFormEditArea($id){
             $this->view->viewFormEditArea($id);
         }
+        //edita un area
         public function editArea(){
             $area = $_POST['x'];
             $id = $_POST['id'];
@@ -53,7 +59,7 @@
             $this->modelAreas->edit($area, $id); 
             header('Location: ' . BASE_URL . "administer"); 
             } else {
-                echo 'error'; 
+                echo 'campos vacios'; 
             }
         }
 
@@ -71,9 +77,10 @@
             $descripcion=$_POST['descripcion'];
             $duracion=$_POST['duracion']; 
             $idarea=$_POST['id_area'];
-            
+
             $this->modelCourses->insertCourse($curso, $descripcion, $duracion, $idarea);
             header('Location: ' . BASE_URL . "administer");
+            
         }
         //eliminar curso
         public function deleteCourse($id){
@@ -85,6 +92,7 @@
             $areas = $this->modelAreas->getAllAreas();
             $this->view->viewFormEditCourse($id, $areas);
         }
+        // edita un curso
         public function editCourse(){
             $idcurso = $_POST['idcurso'];
             $curso = $_POST['curso'];
