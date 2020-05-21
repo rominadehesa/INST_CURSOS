@@ -36,7 +36,7 @@
                 header("Location: " . BASE_URL . "administer");
             }
             else {
-                $this->view->ViewFormLogin("Datos invalidos");
+                echo 'Datos invalidos'; 
             }
 
         }
