@@ -22,9 +22,9 @@ class CoursesModel{
     public function getCoursesOfArea($id){
         $db = $this->createConection();
 
-        $sentencia = $db->prepare("SELECT db_areas.area AS area, db_cursos.curso, 
-        db_cursos.descripcion, db_cursos.duracion, db_cursos.id_curso FROM db_cursos INNER JOIN db_areas 
-        ON db_cursos.id_area = db_areas.id_area WHERE db_areas.id_area = ?"); 
+        $sentencia = $db->prepare("SELECT areas.area AS area, cursos.curso, 
+        cursos.descripcion, cursos.duracion, cursos.id_curso FROM cursos INNER JOIN areas 
+        ON cursos.id_area_fk = areas.id_area WHERE areas.id_area = ?"); 
         $sentencia->execute([$id]);
         $cursos = $sentencia->fetchAll(PDO::FETCH_OBJ); 
         
@@ -35,9 +35,9 @@ class CoursesModel{
         $db = $this->createConection();
         
            
-        $sentencia = $db->prepare("SELECT db_areas.area AS area, db_cursos.curso,
-         db_cursos.descripcion, db_cursos.duracion, db_cursos.id_curso FROM db_cursos 
-         INNER JOIN db_areas ON db_cursos.id_area = db_areas.id_area"); 
+        $sentencia = $db->prepare("SELECT areas.area AS area, cursos.curso,
+         cursos.descripcion, cursos.duracion, cursos.id_curso FROM cursos 
+         INNER JOIN areas ON cursos.id_area_fk = areas.id_area"); 
         $sentencia->execute();
         $cursos = $sentencia->fetchAll(PDO::FETCH_OBJ); 
         
@@ -48,8 +48,9 @@ class CoursesModel{
 
         $db = $this->createConection();
         
-        $sentencia = $db->prepare("SELECT db_areas.area AS area, db_cursos.curso, db_cursos.descripcion, db_cursos.duracion FROM db_cursos INNER JOIN db_areas 
-        ON db_cursos.id_area = db_areas.id_area WHERE db_cursos.id_curso = ?"); 
+        $sentencia = $db->prepare("SELECT areas.area AS area, cursos.curso, cursos.descripcion, 
+        cursos.duracion FROM cursos INNER JOIN areas 
+        ON cursos.id_area_fk = areas.id_area WHERE cursos.id_curso = ?"); 
         $sentencia->execute([$idcurso]);
         $detalles = $sentencia->fetch(PDO::FETCH_OBJ);
         return $detalles;
@@ -58,14 +59,14 @@ class CoursesModel{
     public function delete($id_curso){
         $db = $this->createConection();
     
-        $sentencia = $db->prepare('DELETE FROM db_cursos WHERE id_curso = ?');
+        $sentencia = $db->prepare('DELETE FROM cursos WHERE id_curso = ?');
         $sentencia->execute([$id_curso]);
     }
     //Agrega un curso con su area
     public function insertCourse($curso, $descripcion, $duracion, $idarea){
         $db = $this->createConection();
     
-        $sentencia = $db->prepare("INSERT INTO `db_cursos`(`curso`, `descripcion`, `duracion`, `id_area`) VALUES (?, ?, ?, ?)");
+        $sentencia = $db->prepare("INSERT INTO cursos(curso, descripcion, duracion, id_area_fk) VALUES (?, ?, ?, ?)");
         $sentencia->execute([$curso, $descripcion, $duracion, $idarea]);
     }
 
