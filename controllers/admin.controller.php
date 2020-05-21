@@ -33,27 +33,13 @@
         public function addArea(){
             $area=$_POST['x'];
             $this->modelAreas->insertArea($area);
-            $area;
-            //header('Location: ' . BASE_URL . "administer");
+            
+            header('Location: ' . BASE_URL . "administer");
         }
 
         //eliminar area
         public function deleteArea($id){
             $this->modelAreas->delete($id);
-            header('Location: ' . BASE_URL . "administer");
-        }
-
-        // muestra el formulario para editar una area
-        public function showFormEditArea(){
-            $areas = $this->modelAreas->getAllAreas(); 
-            $this->view->viewFormEditArea($areas); 
-        }
-        // edita una area
-        public function editArea(){
-            $id=$_POST['idarea']; 
-            $area=$_POST['area'];
-
-            $this->modelAreas->edit($id, $area);
             header('Location: ' . BASE_URL . "administer");
         }
         
