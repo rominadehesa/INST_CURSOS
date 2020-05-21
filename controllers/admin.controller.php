@@ -29,7 +29,7 @@
         public function showFormAddArea(){
             $this->view->viewFormArea();
         }
-        //agrega una area
+        //agrega un area
         public function addArea(){
             $area=$_POST['x'];
             $this->modelAreas->insertArea($area);
@@ -42,7 +42,20 @@
             $this->modelAreas->delete($id);
             header('Location: ' . BASE_URL . "administer");
         }
-        
+        //modificar un area
+        public function showFormEditArea($id){
+            $this->view->viewFormEditArea($id);
+        }
+        public function editArea(){
+            $area = $_POST['x'];
+            $id = $_POST['id'];
+            if (!empty($area)){
+            $this->modelAreas->edit($area, $id); 
+            header('Location: ' . BASE_URL . "administer"); 
+            } else {
+                echo 'error'; 
+            }
+        }
 
         // ABM CURSOS
 
