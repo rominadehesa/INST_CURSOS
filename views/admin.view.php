@@ -24,8 +24,9 @@
         }
 
         //vista para editar una area
-        public function viewFormEditArea(){
-            $this->smarty->display('admin.formeditarea.tpl');
+        public function viewFormEditArea($id){
+            $this->smarty->assign('id', $id);
+            $this->smarty->display('admin.formEditArea.tpl');
         }
 
         //Vista de ABM de cursos
