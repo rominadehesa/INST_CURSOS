@@ -80,6 +80,24 @@
             $this->modelCourses->delete($id);
             header('Location: ' . BASE_URL . "administer");
         }
+        //muestra el formulario para editar un curso
+        public function showFormEditCourse($id){
+            $areas = $this->modelAreas->getAllAreas();
+            $this->view->viewFormEditCourse($id, $areas);
+        }
+        public function editCourse(){
+            $idcurso = $_POST['idcurso'];
+            $curso = $_POST['curso'];
+            $descripcion = $_POST['descripcion'];
+            $duracion = $_POST['duracion'];
+            $idarea = $_POST['idarea'];
+            if (!empty($idcurso) && !empty($curso) && !empty($descripcion) && !empty($duracion) && !empty($idarea)){
+                $this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea);
+                header('Location: ' . BASE_URL . "administer");
+            } else {
+                echo 'error';
+            }
+        }
 
         
     }
