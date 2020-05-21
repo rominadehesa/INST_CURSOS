@@ -30,7 +30,7 @@
 
     //ABM de areas
     
-    //Agrega una area
+    //Agrega un area
     public function insertArea($area){
         $db = $this->createConection();
     
@@ -38,11 +38,20 @@
         $sentencia->execute([$area]);
     }
 
-    //Elimina una area
+    //Elimina un area
     public function delete($id){
         $db = $this->createConection();
     
         $sentencia = $db->prepare("DELETE FROM areas WHERE id_area = ?");
         $sentencia->execute([$id]);
+    }
+
+    //Modifica un area
+    public function edit($area, $id){
+        $db = $this->createConection();
+    
+        $sentencia = $db->prepare("UPDATE areas SET area= ? WHERE id_area = ?");
+        $sentencia->execute([$area, $id]);
+        
     }
  }
