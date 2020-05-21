@@ -7,7 +7,6 @@
         <div class="col-12">
             <p class="p-3 mb-2 bg-dark text-white">
             <a class="btn btn-success" href="newarea" role="button">Nueva Area</a>
-            <a class="btn btn-success float-right" href="editarea" role="button">Editar Area</a>
             </p>
 
             {foreach $arrayareas as $area}
@@ -23,15 +22,14 @@
         <div class="col-12">
 
             <p class="p-3 mb-2 bg-dark text-white">
-            <a class="btn btn-success" href="newcourse" role="button">New Curso</a>
+            <a class="btn btn-success" href="newcourse" role="button">Nuevo Curso</a>
             </p>
             
             </p>
             {foreach $arraycursos as $curso}
                     <li class="list-group-item">
                         <p>{$curso->curso}
-                        <a class="btn btn-light text-danger float-right" href="deletecourse/{$curso->id_curso}">Eliminar</a>
-                        <a class="btn btn-light text-dark float-right" href="editcourse/{$curso->id_curso}" role="button">Editar</a></p>
+                        <a class="btn btn-light text-danger float-right" href="deletecourse/{$curso->id_curso}">Eliminar</a></p>
                     </li>
             {/foreach}
         </div>
