@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2020 a las 23:43:00
+-- Tiempo de generación: 21-05-2020 a las 04:40:29
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `db_areas`
+-- Estructura de tabla para la tabla `areas`
 --
 
-CREATE TABLE `db_areas` (
+CREATE TABLE `areas` (
   `id_area` int(11) NOT NULL,
   `area` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -35,15 +35,15 @@ CREATE TABLE `db_areas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `db_cursos`
+-- Estructura de tabla para la tabla `cursos`
 --
 
-CREATE TABLE `db_cursos` (
+CREATE TABLE `cursos` (
   `id_curso` int(11) NOT NULL,
   `curso` varchar(200) NOT NULL,
-  `descripcion` text NOT NULL,
+  `descripcion` varchar(200) NOT NULL,
   `duracion` int(11) NOT NULL,
-  `id_area` int(11) NOT NULL
+  `id_area_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -63,24 +63,25 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuarios`, `username`, `password`) VALUES
-(1, 'juditmeaca@gmail.com', '$2y$10$CMjMRtKWGJFgu9Uk1bFPMuNTxUVeDI5L/q2Klw9SuBPzofxD12q0y');
+(1, 'juditmeaca@gmail.com', '$2y$10$CMjMRtKWGJFgu9Uk1bFPMuNTxUVeDI5L/q2Klw9SuBPzofxD12q0y'),
+(2, 'rominadehesa@gmail.com', '$2y$12$gJXjQBPAJLroKNHVa5XN0eC0EAM5/rKS0W62B2h.13xgTl7IHTqW.');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `db_areas`
+-- Indices de la tabla `areas`
 --
-ALTER TABLE `db_areas`
+ALTER TABLE `areas`
   ADD PRIMARY KEY (`id_area`);
 
 --
--- Indices de la tabla `db_cursos`
+-- Indices de la tabla `cursos`
 --
-ALTER TABLE `db_cursos`
+ALTER TABLE `cursos`
   ADD PRIMARY KEY (`id_curso`),
-  ADD KEY `id_area` (`id_area`);
+  ADD KEY `id_area_fk` (`id_area_fk`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -93,26 +94,32 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `db_cursos`
+-- AUTO_INCREMENT de la tabla `areas`
 --
-ALTER TABLE `db_cursos`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `areas`
+  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `db_areas`
+-- Filtros para la tabla `cursos`
 --
-ALTER TABLE `db_areas`
-  ADD CONSTRAINT `db_areas_ibfk_1` FOREIGN KEY (`id_area`) REFERENCES `db_cursos` (`id_area`);
+ALTER TABLE `cursos`
+  ADD CONSTRAINT `cursos_ibfk_1` FOREIGN KEY (`id_area_fk`) REFERENCES `areas` (`id_area`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
