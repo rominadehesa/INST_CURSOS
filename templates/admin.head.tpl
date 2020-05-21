@@ -14,7 +14,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-light bg-light">
                             <a class="navbar-brand">IDC Administrador</a>
-                            <a class="btn btn-outline-dark" href="home">Salir</a>
+                            <a class="btn btn-outline-dark" href="logout">Logout</a>
                         </nav>
                     </div>
                 </div>

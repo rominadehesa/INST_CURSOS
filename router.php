@@ -41,6 +41,11 @@
             $controller = new AutController();
             $controller->showLogin();
         break;
+        case "logout": 
+            $controller = new AutController();
+            $controller->logout();
+        break;
+
         case 'verify':
             $controller = new AutController();
             $controller->verification();
