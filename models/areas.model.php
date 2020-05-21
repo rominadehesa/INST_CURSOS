@@ -21,7 +21,7 @@
         $db = $this->createConection();
         
            
-        $sentencia = $db->prepare("SELECT * FROM db_areas"); 
+        $sentencia = $db->prepare("SELECT * FROM areas"); 
         $sentencia->execute();
         $areas = $sentencia->fetchAll(PDO::FETCH_OBJ); 
         
@@ -34,7 +34,7 @@
     public function insertArea($area){
         $db = $this->createConection();
     
-        $sentencia = $db->prepare("INSERT INTO db_areas (area) VALUES (?)");
+        $sentencia = $db->prepare("INSERT INTO areas (area) VALUES (?)");
         $sentencia->execute([$area]);
     }
 
@@ -42,15 +42,7 @@
     public function delete($id){
         $db = $this->createConection();
     
-        $sentencia = $db->prepare("DELETE FROM db_areas WHERE id_area = ?");
+        $sentencia = $db->prepare("DELETE FROM areas WHERE id_area = ?");
         $sentencia->execute([$id]);
-    }
-
-    // Editar una area
-    public function edit($id, $area){
-        $db = $this->createConection();
-        
-        $sentencia = $db->prepare("UPDATE db_areas SET area = ? WHERE id_area= ?");
-        $sentencia->execute([$area, $id]);
     }
  }
