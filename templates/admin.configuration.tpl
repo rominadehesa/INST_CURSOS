@@ -33,6 +33,7 @@
                     <li class="list-group-item">
                         <p>{$curso->curso}
                         <a class="btn btn-light text-danger float-right" href="deletecourse/{$curso->id_curso}">Eliminar</a>
+                        <a class="btn btn-light text-dark float-right" href="editcourse/{$curso->id_curso}">Editar</a>
                         </p>
                     </li>
             {/foreach}

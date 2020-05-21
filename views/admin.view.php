@@ -36,5 +36,11 @@
             $this->smarty->assign('areas', $areas);
             $this->smarty->display('admin.formaddcourse.tpl');
         }
+        //vista para editar un curso 
+        public function viewFormEditCourse($id, $areas){
+            $this->smarty->assign('id', $id);
+            $this->smarty->assign('arreglo', $areas);
+            $this->smarty->display('admin.formEditCourse.tpl');
+        }
         
     }
