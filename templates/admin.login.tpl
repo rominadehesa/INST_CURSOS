@@ -13,7 +13,11 @@
                 <input type="password" name="contraseña" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
 
-
+             {if $error}
+        <div class="alert alert-danger">
+            {$error}
+        </div>
+        {/if}
 
         <button type="submit" class="btn btn-dark">Ingresar</button>
         </form> 
