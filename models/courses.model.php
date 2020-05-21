@@ -69,5 +69,13 @@ class CoursesModel{
         $sentencia = $db->prepare("INSERT INTO cursos(curso, descripcion, duracion, id_area_fk) VALUES (?, ?, ?, ?)");
         $sentencia->execute([$curso, $descripcion, $duracion, $idarea]);
     }
+    //Edita un curso 
+    public function edit($idcurso, $curso, $descripcion, $duracion, $idarea){
+        $db = $this->createConection();
+    
+        $sentencia = $db->prepare("UPDATE cursos SET curso = ?, descripcion = ?, duracion = ? , id_area_fk = ? 
+        WHERE id_curso = ?");
+        $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $idcurso]);
+    }
 
 }
