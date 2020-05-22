@@ -2,6 +2,16 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand">IDC Administrador</a>
+                <a class="btn btn-outline-dark" href="home">Volver</a>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
         <p class="text-center bg-danger text-white">Debe loguearse</p>
         <form method="POST" action="verify">
             <div class="form-group">
