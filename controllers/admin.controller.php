@@ -2,7 +2,8 @@
 //Controllador para el Administrador
     require_once 'views/admin.view.php';
     require_once 'models/areas.model.php'; 
-    require_once 'models/courses.model.php'; 
+    require_once 'models/courses.model.php';
+    require_once 'helpers/auth.helper.php';
 
     class AdminController {
 
@@ -14,10 +15,12 @@
             $this->modelAreas = new AreasModel;
             $this->modelCourses = new CoursesModel;
             $this->view = new AdminView;
+            HelperAuth::checkUserLogged(); // antes de ejecutar las funciones de este controlador, va a verificar que el usuario este logueado 
         }
 
         //configuracion general
         public function administration(){
+            
             $areas = $this->modelAreas->getAllAreas();
             $cursos = $this->modelCourses->getAllCourses();
             $this->view->viewConfiguration($areas, $cursos); 
