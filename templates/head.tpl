@@ -20,7 +20,7 @@
                             <a class="btn btn-light" href="home"> Home</a>
                             <a class="btn btn-light" href="areas"> Areas </a>
                             <a class="btn btn-light" href="courses"> Cursos </a>
-                            <a class="btn btn-dark" href="login"> Login</a>
+                            <a class="btn btn-dark" href="administer">Administrador</a>
                         </nav>
                     </div>
                 </div>
