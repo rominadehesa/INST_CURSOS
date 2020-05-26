@@ -4,7 +4,7 @@
      <div class="row">
           <div class="col-12">                
                <ul class="list-group">
-                    <li class="list-group-item bg-dark text-white">Areas</li>
+                    <li id="titulo" class="list-group-item  text-white">Areas</li>
                <!-- Lista de areas-->
                <ul class="list-group">  
                     {foreach $arreglo as $area}

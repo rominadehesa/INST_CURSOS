@@ -10,14 +10,14 @@
 
         {foreach $cursos as $data}
 
-        <div class="col-6">
+        <div class="col-4">
                 <div class="card border-light mb-3">
-                    <div class="card-header bg-dark text-white">{$data->area}</div>
+                    <div id="cursos" class="card-header text-white">{$data->area}</div>
                         <div class="card-body">
                         <h5 class="card-title">{$data->curso}</h5>
                         <p class="card-text">Duracion: {$data->duracion} meses</p>
                         
-                        <a class="btn btn-outline-dark" href="details/{$data->id_curso}">Detalles</a>
+                        <a class="btn btn-light" href="details/{$data->id_curso}">Detalles</a>
                         
                         </div>
                 </div>

@@ -1,3 +1,27 @@
+/*barra de navegaacion*/
 nav {
-    font-family: 'Chelsea Market', cursive;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+/*home*/
+#home img {
+    padding-top: 10px;
+    box-shadow: 7px 7px 11px -4px rgba(88, 93, 107, 0.75);
+}
+/*areas*/
+#titulo {
+    font-size: 17px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    background-color:rgb(110, 95, 117);
+}
+/*cursos*/
+#cursos {
+    font-size: 15px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    background-color:rgb(110, 95, 117);
+}
+/*cursos por area*/
+#curso #subtitulo {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 15px;
+    background-color:rgb(110, 95, 117);
 }

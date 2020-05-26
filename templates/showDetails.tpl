@@ -5,8 +5,8 @@
         <div class="col-12"> 
 
         <ul class="list-group">
-        <li class="list-group-item bg-dark text-white">
-        Curso: {$detalle->curso}</li>
+        <li id="titulo" class="list-group-item text-white">
+         {$detalle->curso}</li>
         <li class="list-group-item list-group-item-light text-dark">
         Area: {$detalle->area}</li>
         <li class="list-group-item list-group-item-light text-dark">

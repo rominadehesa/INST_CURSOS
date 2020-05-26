@@ -6,13 +6,13 @@
     <div class="row">
     {foreach $arreglo as $data}
 
-        <div class="col-12">
+        <div id="curso" class="col-12">
             <div class="card border-light">
-                <div class="card-header bg-dark text-white">{$area}</div>
+                <div id="subtitulo"class="card-header text-white">{$area}</div>
                     <div class="card-body">
                         <h5 class="card-title">{$data->curso}</h5>
                         <p class="card-text">Duracion: {$data->duracion} meses</p>
-                        <a class="btn btn-outline-dark" href="details/{$data->id_curso}">Detalles</a>
+                        <a class="btn btn-light" href="details/{$data->id_curso}">Detalles</a>
                         
                     </div>
             </div>
