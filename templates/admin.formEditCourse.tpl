@@ -18,19 +18,19 @@
     <div class="row">
         <div class="col-12">
             <form action="renamecourse" method="post">
-                <input type="hidden" name="idcurso" value="{$id}">
+                <input type="hidden" name="idcurso" value="{$curso->id_curso}">
                 <div>
                 <label>Nombre del curso: </label>
-                <input name="curso" type="text">
+                <input name="curso" value="{$curso->curso}" type="text">
                 </div>
 
                 <div>
                 <label>Descripcion</label>
-                <input name="descripcion" type="text">
+                <input name="descripcion" value="{$curso->descripcion}" type="text">
                 </div>
                 <div>
                 <label>Duracion (meses):</label>
-                <input name="duracion" type="number">
+                <input name="duracion" value="{$curso->duracion}" type="number">
                 </div>
                 <select name="idarea">
                     {foreach $arreglo as $area}

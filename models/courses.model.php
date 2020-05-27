@@ -48,7 +48,7 @@ class CoursesModel{
 
         $db = $this->createConection();
         
-        $sentencia = $db->prepare("SELECT areas.area AS area, cursos.curso, cursos.descripcion, 
+        $sentencia = $db->prepare("SELECT areas.area AS area, cursos.id_curso, cursos.curso, cursos.descripcion, 
         cursos.duracion FROM cursos INNER JOIN areas 
         ON cursos.id_area_fk = areas.id_area WHERE cursos.id_curso = ?"); 
         $sentencia->execute([$idcurso]);

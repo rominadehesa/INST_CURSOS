@@ -93,8 +93,9 @@
         }
         //muestra el formulario para editar un curso
         public function showFormEditCourse($id){
+            $curso = $this->modelCourses->getCourse($id);            
             $areas = $this->modelAreas->getAllAreas();
-            $this->view->viewFormEditCourse($id, $areas);
+            $this->view->viewFormEditCourse($areas, $curso);
         }
         // edita un curso
         public function editCourse(){
