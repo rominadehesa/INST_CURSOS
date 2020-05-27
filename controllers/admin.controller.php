@@ -52,7 +52,8 @@
         }
         //muestra el formulario para modificar un area
         public function showFormEditArea($id){
-            $this->view->viewFormEditArea($id);
+            $area=$this->modelAreas->getArea($id);
+            $this->view->viewFormEditArea($id, $area);
         }
         //edita un area
         public function editArea(){

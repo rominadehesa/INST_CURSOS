@@ -20,7 +20,7 @@
             <form action="renamearea" method="POST">
                 <div>
                 <label>Renombrar area: </label>
-                <input name="x" type="text">
+                <input name="x" type="text" value="{$area}">
                 </div>
                 <input type="hidden" name="id" value="{$id}">
                 <div>

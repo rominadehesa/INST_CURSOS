@@ -54,4 +54,11 @@
         $sentencia->execute([$area, $id]);
         
     }
+    public function getArea($id){
+        $db = $this->createConection();
+    
+        $sentencia = $db->prepare("SELECT area FROM areas WHERE id_area = ?");
+        $sentencia->execute([$id]);
+
+    }
  }

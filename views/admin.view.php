@@ -24,8 +24,9 @@
         }
 
         //vista para editar una area
-        public function viewFormEditArea($id){
+        public function viewFormEditArea($id, $area){
             $this->smarty->assign('id', $id);
+            $this->smarty->assign('area', $area);
             $this->smarty->display('admin.formEditArea.tpl');
         }
 
