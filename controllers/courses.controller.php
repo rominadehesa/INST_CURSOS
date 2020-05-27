@@ -18,7 +18,13 @@
         //lista los cursos de una area seleccionada
         public function coursesOfArea($id){
             $cursos = $this->model->getCoursesOfArea($id);
-            $this->view->viewCoursesOfArea($cursos);
+            if(!empty($cursos)){
+                $this->view->viewCoursesOfArea($cursos);
+            }
+            else {
+                $this->view->viewError();
+            }
+            
         }
         //lista todos los cursos
         public function showAllCourses(){
