@@ -20,9 +20,9 @@
             <form action="renamearea" method="POST">
                 <div>
                 <label>Renombrar area: </label>
-                <input name="x" type="text" value="{$area}">
+                <input name="x" type="text" value="{$arreglo->area}">
                 </div>
-                <input type="hidden" name="id" value="{$id}">
+                <input type="hidden" name="id" value="{$arreglo->id_area}">
                 <div>
                 <button type="submit" class="btn btn-primary">Editar</button>  
                 </div>

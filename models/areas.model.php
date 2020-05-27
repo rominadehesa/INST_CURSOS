@@ -57,8 +57,11 @@
     public function getArea($id){
         $db = $this->createConection();
     
-        $sentencia = $db->prepare("SELECT area FROM areas WHERE id_area = ?");
+        $sentencia = $db->prepare("SELECT id_area, area FROM `areas` WHERE id_area = ?");
         $sentencia->execute([$id]);
+        $areas = $sentencia->fetch(PDO::FETCH_OBJ); 
+        
+        return $areas;
 
     }
  }
