@@ -9,6 +9,8 @@
     public function __construct(){
         $this->smarty = new Smarty();
         $this->smarty->assign('base_url', BASE_URL);
+        $username = HelperAuth::userLogged();
+        $this->smarty->assign('username', $username);
     }
     
     // vista de todas las areas
