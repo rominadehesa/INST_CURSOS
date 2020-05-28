@@ -36,4 +36,7 @@
             $detalle=$this->model->getCourse($idcurso);
             $this->view->viewDetails($detalle);
         }
+        public function show404(){
+            $this->view->viewError404();
+        }
 }

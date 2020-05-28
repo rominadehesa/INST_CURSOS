@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-12">
             <div class="alert alert-danger">
-                No existen cursos en esta area
+               ERROR 404 NOT FOUND! 
             </div>
         </div>
     </div>
-</div> 
+</div>

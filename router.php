@@ -105,6 +105,7 @@
             $controller->editCourse();
         break;
         default: 
-            echo "404 not found";
+            $controller = new CoursesController(); 
+            $controller->show404();
         break;
     }

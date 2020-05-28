@@ -18,6 +18,10 @@ class CoursesView
     {
         $this->smarty->display('home.tpl');
     }
+    //DEFAULT -> ERROR 404
+    public function viewError404(){
+        $this->smarty->display('error404.tpl');
+    }
 
     //vista de cursos por area
     public function viewCoursesOfArea($cursos)
