@@ -27,7 +27,17 @@
         
         return $areas;
     }
+    //trae una area
+    public function getArea($id){
+        $db = $this->createConection();
+    
+        $sentencia = $db->prepare("SELECT id_area, area FROM `areas` WHERE id_area = ?");
+        $sentencia->execute([$id]);
+        $areas = $sentencia->fetch(PDO::FETCH_OBJ); 
+        
+        return $areas;
 
+    }
     //ABM de areas
     
     //Agrega un area
@@ -54,14 +64,6 @@
         $sentencia->execute([$area, $id]);
         
     }
-    public function getArea($id){
-        $db = $this->createConection();
-    
-        $sentencia = $db->prepare("SELECT id_area, area FROM `areas` WHERE id_area = ?");
-        $sentencia->execute([$id]);
-        $areas = $sentencia->fetch(PDO::FETCH_OBJ); 
-        
-        return $areas;
 
-    }
+
  }

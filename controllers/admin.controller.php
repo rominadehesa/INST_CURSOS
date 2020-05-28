@@ -20,7 +20,6 @@
 
         //configuracion general
         public function administration(){
-            
             $areas = $this->modelAreas->getAllAreas();
             $cursos = $this->modelCourses->getAllCourses();
             $this->view->viewConfiguration($areas, $cursos); 
