@@ -1,4 +1,4 @@
-{include 'admin.head.tpl'}
+{include 'head.tpl'}
 <div class="container">
     <div class="row">
         <div class="col-12">

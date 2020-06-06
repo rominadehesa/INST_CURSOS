@@ -1,5 +1,6 @@
 <!-- Esta plantilla muestra todos los cursos de una area-->
 {include 'head.tpl'}
+{include 'nav.tpl'}
 {$area = $arreglo[0]->area}
 
 <div class= "container">

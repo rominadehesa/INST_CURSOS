@@ -1,4 +1,5 @@
 {include 'head.tpl'}
+{include 'nav.tpl'}
 <div class="container">
     <div class="row">
         <div class="col-12">
