@@ -1,20 +1,24 @@
 <?php
 //Controllador para el Administrador
     require_once 'views/admin.view.php';
+    require_once 'views/courses.view.php';
     require_once 'models/areas.model.php'; 
     require_once 'models/courses.model.php';
     require_once 'helpers/auth.helper.php';
+
 
     class AdminController {
 
         private $modelAreas;
         private $modelCourses;
         private $view; 
+        private $viewCourses;
 
         public function __construct(){
             $this->modelAreas = new AreasModel;
             $this->modelCourses = new CoursesModel;
             $this->view = new AdminView;
+            $this->viewCourses = new CoursesView;
             HelperAuth::checkUserLogged(); // antes de ejecutar las funciones de este controlador, va a verificar que el usuario este logueado 
         }
 
@@ -36,10 +40,10 @@
             $area=$_POST['x'];
             if(!empty($area)){
                 $this->modelAreas->insertArea($area);
-            header('Location: ' . BASE_URL . "administer");
+                header('Location: ' . BASE_URL . "administer");
             }
             else {
-                echo 'campos vacios';
+                $this->viewCourses->viewError("Campo incompleto");
             }
             
         }
@@ -62,7 +66,7 @@
             $this->modelAreas->edit($area, $id); 
             header('Location: ' . BASE_URL . "administer"); 
             } else {
-                echo 'campos vacios'; 
+                $this->viewCourses->viewError("Campos incompletos"); 
             }
         }
 
@@ -81,8 +85,13 @@
             $duracion=$_POST['duracion']; 
             $idarea=$_POST['id_area'];
 
+            if(!empty($curso)&&!empty($descripcion)&&!empty($duracion)&&!empty($idarea)){
             $this->modelCourses->insertCourse($curso, $descripcion, $duracion, $idarea);
             header('Location: ' . BASE_URL . "administer");
+            }
+            else {
+                $this->viewCourses->viewError("Campos incompletos");
+            }
             
         }
         //eliminar curso
@@ -107,7 +116,7 @@
                 $this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea);
                 header('Location: ' . BASE_URL . "administer");
             } else {
-                echo 'error';
+                $this->viewCourses->viewError("Campos incompletos");
             }
         }
 
