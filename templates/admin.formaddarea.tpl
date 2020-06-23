@@ -16,6 +16,11 @@
                 
                     <button type="submit" class="btn btn-primary">Agregar</button>
                     <a href="administer" class="btn btn-primary">Cancelar</a>
+                    {if $error}
+                <div class="alert alert-danger">
+                    {$error}
+                </div>
+                {/if}
                 
             </form>
         </div>

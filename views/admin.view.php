@@ -21,7 +21,8 @@
         //Vista de ABM de areas
 
         //Vista para agregar una area
-        public function viewFormArea(){
+        public function viewFormArea($error=null){
+            $this->smarty->assign('error', $error);
             $this->smarty->display('admin.formaddarea.tpl');
         }
 
