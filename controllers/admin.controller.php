@@ -39,7 +39,7 @@
             header('Location: ' . BASE_URL . "administer");
             }
             else {
-                echo 'campos vacios';
+                echo 'campos vacios';//sacar esto
             }
             
         }
