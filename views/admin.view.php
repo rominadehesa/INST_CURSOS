@@ -21,8 +21,8 @@
 
         //Vista para agregar una area
         public function viewFormArea($error=null){
-            $this->smarty->assign('error', $error);
-            $this->smarty->display('admin.formaddarea.tpl');
+            $this->getSmarty()->assign('error', $error);
+            $this->getSmarty()->display('admin.formaddarea.tpl');
         }
 
         //vista para editar una area
