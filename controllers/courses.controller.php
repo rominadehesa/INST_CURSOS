@@ -22,7 +22,7 @@
                 $this->view->viewCoursesOfArea($cursos);
             }
             else {
-                $this->view->viewError();
+                $this->view->viewError("No hay cursos en la area seleccionada");
             }
             
         }
@@ -36,7 +36,8 @@
             $detalle=$this->model->getCourse($idcurso);
             $this->view->viewDetails($detalle);
         }
+
         public function show404(){
-            $this->view->viewError404();
+            $this->view->viewError("Error 404!!!!");
         }
 }

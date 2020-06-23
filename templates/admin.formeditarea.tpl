@@ -1,14 +1,5 @@
-{include 'admin.head.tpl'}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand">IDC Administrador</a>
-                <a class="btn btn-outline-dark" href="logout">Logout</a>
-            </nav>
-        </div>
-    </div>
-</div>
+{include 'head.tpl'}
+{include 'admin.nav.tpl'}
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -24,7 +15,8 @@
                 </div>
                 <input type="hidden" name="id" value="{$arreglo->id_area}">
                 <div>
-                <button type="submit" class="btn btn-primary">Editar</button>  
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <a href="administer" class="btn btn-primary">Cancelar</a> 
                 </div>
             </form>
         </div>

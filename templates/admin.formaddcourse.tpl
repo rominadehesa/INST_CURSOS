@@ -1,14 +1,5 @@
-{include 'admin.head.tpl'}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand">IDC Administrador</a>
-                <a class="btn btn-outline-dark" href="logout">Logout</a>
-            </nav>
-        </div>
-    </div>
-</div>
+{include 'head.tpl'}
+{include 'admin.nav.tpl'}
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -39,7 +30,8 @@
                     {/foreach}
                 </select>   
                 </div>
-                <button type="submit" class="btn btn-primary">Agregar</button>  
+                <button type="submit" class="btn btn-primary">Agregar</button>
+                <a href="administer" class="btn btn-primary">Cancelar</a>  
             </form>
         </div>
     </div>

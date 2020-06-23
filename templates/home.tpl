@@ -1,5 +1,6 @@
 <!--Esta plantilla muestra el home de la pagina-->
 {include 'head.tpl'}
+{include 'nav.tpl'}
     <div id="home" class= "container">
         <div class="row">
             <div class="col-6">
