@@ -43,7 +43,7 @@
                 header('Location: ' . BASE_URL . "administer");
             }
             else {
-                
+                $this->view->viewFormArea('Campos incompletos');
             }
             
         }
