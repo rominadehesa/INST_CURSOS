@@ -43,7 +43,11 @@
                 header('Location: ' . BASE_URL . "administer");
             }
             else {
+<<<<<<< HEAD
                 echo 'campos vacios';//sacar esto
+=======
+                $this->view->viewFormArea('Campos incompletos');
+>>>>>>> b035fe49baaf5095c28a5db272209e3b38684105
             }
             
         }

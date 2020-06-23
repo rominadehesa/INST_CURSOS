@@ -20,8 +20,14 @@
         //Vista de ABM de areas
 
         //Vista para agregar una area
+<<<<<<< HEAD
         public function viewFormArea(){
             $this->getSmarty()->display('admin.formaddarea.tpl');
+=======
+        public function viewFormArea($error=null){
+            $this->smarty->assign('error', $error);
+            $this->smarty->display('admin.formaddarea.tpl');
+>>>>>>> b035fe49baaf5095c28a5db272209e3b38684105
         }
 
         //vista para editar una area
