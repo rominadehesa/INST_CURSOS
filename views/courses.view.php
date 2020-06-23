@@ -1,47 +1,39 @@
 <?php
-require_once 'libs/Smarty/Smarty.class.php';
-class CoursesView
-{
+    require_once('base.view.php');
+    require_once('helpers/auth.helper.php');
+    class CoursesView extends View {
 
-    private $smarty;
-
-    public function __construct()
-    {
-        $this->smarty = new Smarty();
-        $this->smarty->assign('base_url', BASE_URL);
+    public function __construct(){
+        parent::__construct();
         $username = HelperAuth::userLogged();
-        $this->smarty->assign('username', $username);
+        $this->getSmarty()->assign('username', $username);
     }
 
     //vista del home
-    public function ViewHome()
-    {
-        $this->smarty->display('home.tpl');
+    public function ViewHome(){
+        $this->getSmarty()->display('home.tpl');
     }
     //DEFAULT -> ERROR 404
     public function viewError($msj = null){
-        $this->smarty->assign("error", $msj);
-        $this->smarty->display('error.tpl');
+        $this->getSmarty()->assign("error", $msj);
+        $this->getSmarty()->display('error.tpl');
     }
 
     //vista de cursos por area
-    public function viewCoursesOfArea($cursos)
-    {
-        $this->smarty->assign('arreglo', $cursos);
-        $this->smarty->display('showCoursesOfArea.tpl');
+    public function viewCoursesOfArea($cursos){
+        $this->getSmarty()->assign('arreglo', $cursos);
+        $this->getSmarty()->display('showCoursesOfArea.tpl');
     }
 
     //vista de todos los cursos
-    public function viewAllCourses($cursos)
-    {
-        $this->smarty->assign('cursos', $cursos);
-        $this->smarty->display('showAllCourses.tpl');
+    public function viewAllCourses($cursos){
+        $this->getSmarty()->assign('cursos', $cursos);
+        $this->getSmarty()->display('showAllCourses.tpl');
     }
 
     //vista de los detalles de un curso 
-    public function viewDetails($detalle)
-    {
-        $this->smarty->assign('detalle', $detalle);
-        $this->smarty->display('showDetails.tpl');
+    public function viewDetails($detalle){
+        $this->getSmarty()->assign('detalle', $detalle);
+        $this->getSmarty()->display('showDetails.tpl');
     }
 }

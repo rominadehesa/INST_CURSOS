@@ -16,6 +16,4 @@
             $areas = $this->model->getAllAreas();
             $this->view->viewAreas($areas);
         }
-
-
     }

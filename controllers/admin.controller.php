@@ -43,11 +43,7 @@
                 header('Location: ' . BASE_URL . "administer");
             }
             else {
-<<<<<<< HEAD
                 echo 'campos vacios';//sacar esto
-=======
-                $this->viewCourses->viewError("Campo incompleto");
->>>>>>> 53b17c0fc19e963fdd612fb070667f9321c94e3c
             }
             
         }
