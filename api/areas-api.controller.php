@@ -31,4 +31,20 @@ class AreasApiController{
         else
             $this->view->response("no existe area con id {$id}", 404);
     }
+
+    public function deleteArea($params = []){
+        $id = $params[':ID'];
+        $area = $this->model->getArea($id);
+
+         // verifico que exista
+         if (empty($area)) {
+            $this->view->response("no existe area con id {$id}", 404);
+            die();
+        }
+
+        // si existe la elimina
+        $this->model->delete($id);
+        $this->view->response("La tarea con id {$id} se eliminó correctamente", 200);
+
+    }
 }

@@ -1,5 +1,5 @@
 <?php
-
+//vista comun para todos los servicios, encargada de mostrar json y manejar codigo de respuestas
 class APIview{
     public function response($data, $status) {
         header("Content-Type: application/json"); //avisa que devuelve json
@@ -7,6 +7,8 @@ class APIview{
         echo json_encode($data);
     }
 
+
+    //segun el codigo, esta funcion devuelve un mensaje asociado a ese codigo de respuesta
     private function _requestStatus($code){
         $status = array(
           200 => "OK",

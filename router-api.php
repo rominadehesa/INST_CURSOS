@@ -8,8 +8,10 @@ require_once 'api/areas-api.controller.php';
 $router= new Router();
 
 //creo la tabla de ruteo
+//Areas
 $router->addRoute('areas', 'GET', 'AreasApiController', 'getAreas'); 
 $router->addRoute('areas/:ID', 'GET', 'AreasApiController', 'getArea');
+$router->addRoute('areas/:ID', 'DELETE', 'AreasApiController', 'deleteArea');
 
 //$router->addRoute('comments', 'GET', 'CommentsApiController', 'getComments');
 //$router->addRoute('comments/:ID', 'GET', 'CommentsApiController', 'getComment');
