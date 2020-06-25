@@ -24,7 +24,6 @@ class AreasApiController{
     
     public function getArea($params = []) {
         $id = $params[':ID'];
-
         $area = $this->model->getArea($id);
         if ($area)
             $this->view->response($area, 200);
