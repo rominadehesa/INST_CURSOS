@@ -30,7 +30,7 @@
                 //abro sesion y guardo al usuario
                 session_start();
                 $_SESSION['IS_LOGGED'] = true;
-                $_SESSION['ID_USER'] = $user->id_usuarios;
+                $_SESSION['ID_USER'] = $user->id_usuario;
                 $_SESSION['USERNAME'] = $user->username;
                 
 
