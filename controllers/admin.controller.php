@@ -4,6 +4,7 @@
     require_once 'views/courses.view.php';
     require_once 'models/areas.model.php'; 
     require_once 'models/courses.model.php';
+    require_once 'models/users.model.php';
     require_once 'helpers/auth.helper.php';
 
 
@@ -11,12 +12,14 @@
 
         private $modelAreas;
         private $modelCourses;
+        private $modelUsers; 
         private $view; 
         private $viewCourses;
 
         public function __construct(){
             $this->modelAreas = new AreasModel;
             $this->modelCourses = new CoursesModel;
+            $this->modelUsers = new UserModel;
             $this->view = new AdminView;
             $this->viewCourses = new CoursesView;
             HelperAuth::checkUserLogged(); // antes de ejecutar las funciones de este controlador, va a verificar que el usuario este logueado 
@@ -26,7 +29,8 @@
         public function administration(){
             $areas = $this->modelAreas->getAllAreas();
             $cursos = $this->modelCourses->getAllCourses();
-            $this->view->viewConfiguration($areas, $cursos); 
+            $usuarios = $this->modelUsers->getAllUsers(); 
+            $this->view->viewConfiguration($areas, $cursos, $usuarios); 
         }
 
         // ABM AREAS
@@ -119,6 +123,10 @@
                 $this->viewCourses->viewError("Campos incompletos");
             }
         }
-
         
+        //ABM usuarios
+        public function deleteUser($id){
+            $this->modelUsers->delete($id);
+            header('Location: ' . BASE_URL . "administer");
+        }
     }

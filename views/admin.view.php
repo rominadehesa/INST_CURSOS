@@ -11,10 +11,12 @@
         }
 
         //Vista administrador
-        public function viewConfiguration($areas, $cursos){
+        public function viewConfiguration($areas, $cursos, $usuarios){
             $this->getSmarty()->assign('arrayareas', $areas);
             $this->getSmarty()->assign('arraycursos', $cursos);
+            $this->getSmarty()->assign('arrayusuarios', $usuarios);
             $this->getSmarty()->display('admin.configuration.tpl');
+
         }
 
         //Vista de ABM de areas

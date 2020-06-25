@@ -19,33 +19,25 @@
         public function verification(){
             $usuario = $_POST['usuario'];
             $password = $_POST['contraseña'];
-
-            
+        
             //busco el usuario 
 
             $user = $this->model->getUser($usuario);
-            
             if ($user && password_verify($password, $user->password)){
-                
-                //abro sesion y guardo al usuario
-                session_start();
+            //abro sesion y guardo al usuario
+            session_start();
                 $_SESSION['IS_LOGGED'] = true;
                 $_SESSION['ID_USER'] = $user->id_usuario;
                 $_SESSION['USERNAME'] = $user->username;
-                
-
-                header("Location: " . BASE_URL . "administer");
-            }
-            else {
+            header("Location: " . BASE_URL . "administer");
+            } else {
                 $this->view->ViewFormLogin('Datos invalidos'); 
             }
-
         }
+
         public function logout() {
             session_start();
             session_destroy();
             header("Location: " . BASE_URL . 'home');
         }
-    
-
     }

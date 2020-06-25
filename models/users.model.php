@@ -9,12 +9,18 @@ class UserModel  extends Model{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
+    public function getAllUsers(){
+        $sentencia = $this->getDb()->prepare("SELECT * FROM usuarios");
+        $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
     //funcion que borra un usuario
 
-    //public function delete($id_usuario){
-    //    $sentencia = $this->getDb()->prepare('DELETE FROM usuarios WHERE id_usuarios = ?');
-    //    $sentencia->execute([$id_usuario]);
-    //}
+    public function delete($id_usuario){
+        $sentencia = $this->getDb()->prepare('DELETE FROM usuarios WHERE id_usuario = ?');
+        $sentencia->execute([$id_usuario]);
+    }
 
     //funcion que da permiso al usuario para que sea administrador 
 
