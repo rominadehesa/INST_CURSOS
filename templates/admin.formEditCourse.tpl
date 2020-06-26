@@ -24,11 +24,16 @@
                 <input name="duracion" value="{$curso->duracion}" type="number">
                 </div>
                 <div>
+                <label>Area:</label>
                 <select name="idarea">
                     {foreach $arreglo as $area}
                     <option value="{$area->id_area}">{$area->area}</option>
                     {/foreach}
                 </select>
+                <div>
+                <label>Imagen: </label>
+                <input type="file" name="input_name" id="imageToUpload">
+             </div>
                 </div>
                 <div>
                 <button type="submit" class="btn btn-primary">Agregar</button> 

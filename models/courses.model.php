@@ -40,9 +40,19 @@
         $sentencia->execute([$id_curso]);
     }
     //Agrega un curso con su area
-    public function insertCourse($curso, $descripcion, $duracion, $idarea){
-        $sentencia = $this->getDb()->prepare("INSERT INTO cursos(curso, descripcion, duracion, id_area_fk) VALUES (?, ?, ?, ?)");
-        $sentencia->execute([$curso, $descripcion, $duracion, $idarea]);
+    public function insertCourse($curso, $descripcion, $duracion, $idarea, $image = null){
+        $pathImg=null;
+        if ($image)
+            $pathImg = $this->uploadImage($image);
+        
+        $sentencia = $this->getDb()->prepare("INSERT INTO cursos(curso, descripcion, duracion, id_area_fk, imagen) VALUES (?, ?, ?, ?, ?)");
+        $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg]);
+    }
+
+    private function uploadImage($img){
+        $target = 'upload/courses/' . uniqid() . '.jpg';
+        move_uploaded_file($img, $target);
+        return $target;
     }
     //Edita un curso 
     public function edit($idcurso, $curso, $descripcion, $duracion, $idarea){

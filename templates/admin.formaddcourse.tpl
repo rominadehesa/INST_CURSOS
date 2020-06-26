@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="addcourse" method="post">
+            <form action="addcourse" method="post" enctype="multipart/form-data">
                 <div>
                 <label>Nombre del curso: </label>
                 <input name="curso" type="text">
@@ -30,6 +30,11 @@
                     {/foreach}
                 </select>   
                 </div>
+                <div>
+                    <label>Imagen: </label>
+                    <input type="file" name="input_name" id="imageToUpload">
+                 </div>
+
                 <button type="submit" class="btn btn-primary">Agregar</button>
                 <a href="administer" class="btn btn-primary">Cancelar</a>  
             </form>

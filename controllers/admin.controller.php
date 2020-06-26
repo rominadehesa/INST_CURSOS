@@ -92,6 +92,11 @@
             else {
                 $this->viewCourses->viewError("Campos incompletos");
             }
+
+            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){
+                $this->modelCourses->insertCourse($curso, $descripcion, $duracion, $idarea, $_FILES['input_name']['tmp_name']);
+            } 
+            die();      
             
         }
         //eliminar curso

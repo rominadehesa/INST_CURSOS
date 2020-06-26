@@ -15,6 +15,12 @@
         <li class="list-group-item list-group-item-ligth">
         Duracion: {$detalle->duracion} meses</li>
 
+        {if !empty($detalle->imagen)}
+            <img class="img-task" src="./{$detalle->imagen}" />
+        {/if}
+
+
+
         </div>
     </div>
 </div>
