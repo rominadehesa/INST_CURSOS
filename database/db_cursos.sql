@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2020 a las 23:40:59
+-- Tiempo de generación: 26-06-2020 a las 15:37:24
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -65,6 +65,7 @@ CREATE TABLE `cursos` (
   `curso` varchar(200) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
   `duracion` int(11) NOT NULL,
+  `imagen` varchar(200) DEFAULT NULL,
   `id_area_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -72,9 +73,9 @@ CREATE TABLE `cursos` (
 -- Volcado de datos para la tabla `cursos`
 --
 
-INSERT INTO `cursos` (`id_curso`, `curso`, `descripcion`, `duracion`, `id_area_fk`) VALUES
-(8, 'Auxiliar Contable', ' El curso tiene un perfil práctico por lo cuál los participantes podrán desempeñarse en el área administrativo-contable de una organización. ', 6, 11),
-(9, 'Diseño de Interiores', 'Este curso propone saber los conceptos basicos del diseño y decoracion de un lugar como una casa, oficina, etc. ', 12, 13);
+INSERT INTO `cursos` (`id_curso`, `curso`, `descripcion`, `duracion`, `imagen`, `id_area_fk`) VALUES
+(8, 'Auxiliar Contable', ' El curso tiene un perfil práctico por lo cuál los participantes podrán desempeñarse en el área administrativo-contable de una organización. ', 6, '', 11),
+(9, 'Diseño de Interiores', 'Este curso propone saber los conceptos basicos del diseño y decoracion de un lugar como una casa, oficina, etc. ', 12, '', 13);
 
 -- --------------------------------------------------------
 
@@ -94,8 +95,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `permission`) VALUES
-(1, 'juditmeaca@gmail.com', '$2y$10$CMjMRtKWGJFgu9Uk1bFPMuNTxUVeDI5L/q2Klw9SuBPzofxD12q0y', 0),
-(2, 'rominadehesa@gmail.com', '$2y$12$gJXjQBPAJLroKNHVa5XN0eC0EAM5/rKS0W62B2h.13xgTl7IHTqW.', 0);
+(1, 'juditmeaca@gmail.com', '$2y$10$CMjMRtKWGJFgu9Uk1bFPMuNTxUVeDI5L/q2Klw9SuBPzofxD12q0y', 1),
+(2, 'rominadehesa@gmail.com', '$2y$12$gJXjQBPAJLroKNHVa5XN0eC0EAM5/rKS0W62B2h.13xgTl7IHTqW.', 1);
 
 --
 -- Índices para tablas volcadas
@@ -111,7 +112,9 @@ ALTER TABLE `areas`
 -- Indices de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  ADD PRIMARY KEY (`id_comentario`);
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_usuario_fk` (`id_usuario_fk`),
+  ADD KEY `id_curso_fk` (`id_curso_fk`);
 
 --
 -- Indices de la tabla `cursos`
@@ -140,7 +143,7 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos`
@@ -152,11 +155,18 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_3` FOREIGN KEY (`id_usuario_fk`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `comentarios_ibfk_4` FOREIGN KEY (`id_curso_fk`) REFERENCES `cursos` (`id_curso`);
 
 --
 -- Filtros para la tabla `cursos`
