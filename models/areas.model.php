@@ -1,4 +1,4 @@
- <?php 
+<?php 
     require_once ('base.model.php');
     class AreasModel extends Model{
     

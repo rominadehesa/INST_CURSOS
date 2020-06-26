@@ -104,6 +104,13 @@
             $controller = new AdminController();
             $controller->editCourse();
         break;
+
+        // ABM usarios
+        case 'deleteuser':
+            $controller = new AdminController();
+            $controller->deleteUser($parametros[1]);
+        break;
+
         default: 
             $controller = new CoursesController(); 
             $controller->show404();
