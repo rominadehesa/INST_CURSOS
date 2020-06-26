@@ -89,18 +89,27 @@
             $duracion=$_POST['duracion']; 
             $idarea=$_POST['id_area'];
 
-            if(!empty($curso)&&!empty($descripcion)&&!empty($duracion)&&!empty($idarea)){
-            $this->modelCourses->insertCourse($curso, $descripcion, $duracion, $idarea);
-            header('Location: ' . BASE_URL . "administer");
+            if(empty($curso) || empty($descripcion)|| empty($duracion) || empty($idarea)){
+            $this->viewCourses->viewError("Campos incompletos");
             }
-            else {
-                $this->viewCourses->viewError("Campos incompletos");
+            
+
+            if($_FILES['input_name']['type'] == "image/jpg" ||
+            $_FILES['input_name']['type'] == "image/jpeg" |
+            $_FILES['input_name']['type'] == "image/png"){
+                $success = $this->modelCourses->insertCourse($curso, $descripcion, 
+                $duracion, $idarea, $_FILES['input_name']['tmp_name']);
+            } else {
+                $success = $this->modelCourses->insertCourse($curso, $descripcion, 
+                $duracion, $idarea);
             }
 
-            if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){
-                $this->modelCourses->insertCourse($curso, $descripcion, $duracion, $idarea, $_FILES['input_name']['tmp_name']);
-            } 
-            die();      
+            if($success) {
+                header('Location: ' . BASE_URL . "administer");
+            } else {
+                $this->viewCourses->viewError("Campos incompletos");
+            }
+               
             
         }
         //eliminar curso

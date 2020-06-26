@@ -28,7 +28,7 @@
     public function getCourse($idcurso){
 
         $sentencia = $this->getDb()->prepare("SELECT areas.area AS area, cursos.id_curso, cursos.curso, cursos.descripcion, 
-        cursos.duracion FROM cursos INNER JOIN areas 
+        cursos.duracion, cursos.imagen FROM cursos INNER JOIN areas 
         ON cursos.id_area_fk = areas.id_area WHERE cursos.id_curso = ?"); 
         $sentencia->execute([$idcurso]);
         $detalles = $sentencia->fetch(PDO::FETCH_OBJ);
@@ -40,18 +40,18 @@
         $sentencia->execute([$id_curso]);
     }
     //Agrega un curso con su area
-    public function insertCourse($curso, $descripcion, $duracion, $idarea, $image = null){
-        $pathImg=null;
-        if ($image)
-            $pathImg = $this->uploadImage($image);
+    public function insertCourse($curso, $descripcion, $duracion, $idarea, $imagen = null){
+        $pathImg=null; 
+        if ($imagen)
+            $pathImg = $this->uploadImage($imagen); //lo que nos devuelve la funcion uploadImage
         
         $sentencia = $this->getDb()->prepare("INSERT INTO cursos(curso, descripcion, duracion, id_area_fk, imagen) VALUES (?, ?, ?, ?, ?)");
-        $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg]);
+        return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg]);
     }
 
-    private function uploadImage($img){
+    private function uploadImage($imagen){
         $target = 'upload/courses/' . uniqid() . '.jpg';
-        move_uploaded_file($img, $target);
+        move_uploaded_file($imagen, $target); 
         return $target;
     }
     //Edita un curso 
