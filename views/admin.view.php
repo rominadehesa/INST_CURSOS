@@ -28,22 +28,25 @@
         }
 
         //vista para editar una area
-        public function viewFormEditArea($areas){
+        public function viewFormEditArea($areas, $error=null){
             $this->getSmarty()->assign('arreglo', $areas);
+            $this->getSmarty()->assign('error', $error);
             $this->getSmarty()->display('admin.formEditArea.tpl');
         }
 
         //Vista de ABM de cursos
         
         //Vista para agregar un curso
-        public function viewFormCourse($areas){
+        public function viewFormCourse($areas, $error=null){
             $this->getSmarty()->assign('areas', $areas);
+            $this->getSmarty()->assign('error', $error);
             $this->getSmarty()->display('admin.formaddcourse.tpl');
         }
         //vista para editar un curso 
-        public function viewFormEditCourse($areas, $curso){
+        public function viewFormEditCourse($areas, $curso, $error=null){
             $this->getSmarty()->assign('curso', $curso);
             $this->getSmarty()->assign('arreglo', $areas);
+            $this->getSmarty()->assign('error', $error);
             $this->getSmarty()->display('admin.formEditCourse.tpl');
         }
         

@@ -66,11 +66,12 @@
         public function editArea(){
             $area = $_POST['x'];
             $id = $_POST['id'];
+            $areas=$this->modelAreas->getArea($id);
             if (!empty($area)){
             $this->modelAreas->edit($area, $id); 
             header('Location: ' . BASE_URL . "administer"); 
             } else {
-                $this->viewCourses->viewError("Campos incompletos"); 
+                $this->view->viewFormEditArea($areas, "Campos incompletos");
             }
         }
 
@@ -88,13 +89,15 @@
             $descripcion=$_POST['descripcion'];
             $duracion=$_POST['duracion']; 
             $idarea=$_POST['id_area'];
+            $areas=$this->modelAreas->getAllAreas();
 
-            if(empty($curso) || empty($descripcion)|| empty($duracion) || empty($idarea)){
-            $this->viewCourses->viewError("Campos incompletos");
+            if(empty($curso) || empty($descripcion)|| empty($duracion)){
+            $this->view->viewFormCourse($areas, "Campos incompletos");
             }
-            
 
-            if($_FILES['input_name']['type'] == "image/jpg" ||
+            else{
+
+                if($_FILES['input_name']['type'] == "image/jpg" ||
             $_FILES['input_name']['type'] == "image/jpeg" |
             $_FILES['input_name']['type'] == "image/png"){
                 $success = $this->modelCourses->insertCourse($curso, $descripcion, 
@@ -103,13 +106,13 @@
                 $success = $this->modelCourses->insertCourse($curso, $descripcion, 
                 $duracion, $idarea);
             }
-
+        
             if($success) {
-                header('Location: ' . BASE_URL . "administer");
+                header('Location: ' . BASE_URL . "courses");
             } else {
                 $this->viewCourses->viewError("Campos incompletos");
             }
-               
+        }    
             
         }
         //eliminar curso
@@ -130,11 +133,15 @@
             $descripcion = $_POST['descripcion'];
             $duracion = $_POST['duracion'];
             $idarea = $_POST['idarea'];
-            if (!empty($idcurso) && !empty($curso) && !empty($descripcion) && !empty($duracion) && !empty($idarea)){
+            $areas = $this->modelAreas->getAllAreas();
+            $cursos = $this->modelCourses->getCourse($idcurso);
+            
+
+            if (!empty($idcurso) && !empty($curso) && !empty($descripcion) && !empty($duracion)){
                 $this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea);
                 header('Location: ' . BASE_URL . "administer");
             } else {
-                $this->viewCourses->viewError("Campos incompletos");
+                $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
             }
         }
         

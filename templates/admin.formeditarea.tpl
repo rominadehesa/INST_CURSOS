@@ -18,6 +18,11 @@
                 <button type="submit" class="btn btn-primary">Editar</button>
                 <a href="administer" class="btn btn-primary">Cancelar</a> 
                 </div>
+                {if $error}
+                    <div class="alert alert-danger">
+                        {$error}
+                    </div>
+                    {/if}
             </form>
         </div>
     </div>
