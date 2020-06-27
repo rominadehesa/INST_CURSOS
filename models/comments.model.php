@@ -22,4 +22,10 @@
         $sentencia = $this->getDb()->prepare("DELETE FROM comentarios WHERE id_comentario = ?");
         $sentencia->execute([$id]);
     }
+
+    public function insert($comentario, $puntuacion, $id_usuario_fk, $id_curso_fk){
+        $sentencia = $this->getDb()->prepare('INSERT INTO comentarios(comentario, puntuacion, id_usuario_fk, id_curso_fk) VALUES (?, ?, ?, ?)');
+        return $sentencia->execute([$comentario, $puntuacion, $id_usuario_fk, $id_curso_fk]);
+
+    }
 }

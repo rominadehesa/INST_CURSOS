@@ -5,11 +5,37 @@
     class CommentsApiController{
         private $model;
         private $view;
+        private $data;
 
         public function __construct(){
             $this->model = new CommentsModel();
             $this->view= new APIview();
+            $this->data = file_get_contents("php://input");
+            
         }
+
+        public function getData() {
+            return json_decode($this->data);
+        }
+        
+        public function addComment($params = []) {
+            // devuelve el objeto JSON enviado por POST     
+            $body = $this->getData();
+            
+            $comentario = $body->comentario;
+            $puntuacion = $body->puntuacion;
+            $id_usuario_fk = $body->id_usuario_fk;
+            $id_curso_fk = $body->id_curso_fk;
+
+            $x = $this->model->insert($comentario, $puntuacion, $id_usuario_fk, $id_curso_fk); 
+
+            if ($x){
+            $this->view->response("Se agrego el comentario", 200);
+            } else{
+            $this->view->response("No se puedo agregar el comentario", 500);
+            }
+        }
+    
 
         public function getComments(){
             $comentarios=$this->model->getAll();
@@ -39,4 +65,6 @@
             $this->model->delete($id);
             $this->view->response("El comentario con id {$id} se eliminó correctamente", 200);
         }
+
+
 }
