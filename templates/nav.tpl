@@ -6,6 +6,7 @@
                             <a class="btn btn-light" href="home"> Home</a>
                             <a class="btn btn-light" href="areas"> Areas </a>
                             <a class="btn btn-light" href="courses"> Cursos </a>
+                            <a class="btn btn-dark" href="registry">Registrarme</a>
                             <a class="btn btn-dark" href="administer">Administrador {$username}</a>
                         </nav>
                     </div>

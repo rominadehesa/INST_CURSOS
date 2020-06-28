@@ -11,10 +11,9 @@
         }
 
         //Vista administrador
-        public function viewConfiguration($areas, $cursos, $usuarios){
+        public function viewConfiguration($areas, $cursos){
             $this->getSmarty()->assign('arrayareas', $areas);
             $this->getSmarty()->assign('arraycursos', $cursos);
-            $this->getSmarty()->assign('arrayusuarios', $usuarios);
             $this->getSmarty()->display('admin.configuration.tpl');
 
         }
@@ -48,6 +47,14 @@
             $this->getSmarty()->assign('arreglo', $areas);
             $this->getSmarty()->assign('error', $error);
             $this->getSmarty()->display('admin.formEditCourse.tpl');
+        }
+
+        //Vista configuracion de usuarios
+
+        public function viewUsers($usersadmin, $usersnotadmin){
+            $this->getSmarty()->assign('usersadmin', $usersadmin);
+            $this->getSmarty()->assign('users', $usersnotadmin);
+            $this->getSmarty()->display('admin.usersconfiguration.tpl');
         }
         
     }

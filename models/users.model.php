@@ -9,11 +9,23 @@ class UserModel  extends Model{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
-    public function getAllUsers(){
-        $sentencia = $this->getDb()->prepare("SELECT * FROM usuarios");
-        $sentencia->execute();
+    public function getAdministrators($permission){
+        $sentencia = $this->getDb()->prepare("SELECT * FROM usuarios WHERE permission = ?");
+        $sentencia->execute([$permission]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getNotAdministrators($notpermission){
+        $sentencia = $this->getDb()->prepare("SELECT * FROM usuarios WHERE permission = ?");
+        $sentencia->execute([$notpermission]);
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    //registar nuevo usuario
+    public function newUser($usuario, $contraseña){
+        $sentencia = $this->getDb()->prepare('INSERT INTO usuarios(username, password, permission) VALUES (?, ?, ?)');
+        $sentencia->execute([$usuario, $contraseña, 0]);
+    } 
 
     //funcion que borra un usuario
 
@@ -24,10 +36,14 @@ class UserModel  extends Model{
 
     //funcion que da permiso al usuario para que sea administrador 
 
-    //public function givePermission($id_usuario, $permiso){
-    //   $sentencia = $this->getDb()->prepare("UPDATE usuarios SET permiso = ?,
-    //     WHERE id_usuarios = ?");
-    //    $sentencia->execute([$permiso, $id_usurios]);
-    //}
+    public function offPermission($id){
+        $sentencia = $this->getDb()->prepare("UPDATE usuarios SET permission = ? WHERE id_usuario = ?");
+        $sentencia->execute([0, $id]);
+    }
+
+    public function onPermission($id){
+        $sentencia = $this->getDb()->prepare("UPDATE usuarios SET permission = ? WHERE id_usuario = ?");
+        $sentencia->execute([1, $id]);
+    }
 
 }

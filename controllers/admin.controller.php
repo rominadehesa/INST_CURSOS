@@ -29,8 +29,7 @@
         public function administration(){
             $areas = $this->modelAreas->getAllAreas();
             $cursos = $this->modelCourses->getAllCourses();
-            $usuarios = $this->modelUsers->getAllUsers(); 
-            $this->view->viewConfiguration($areas, $cursos, $usuarios); 
+            $this->view->viewConfiguration($areas, $cursos); 
         }
 
         // ABM AREAS
@@ -146,8 +145,27 @@
         }
         
         //ABM usuarios
+
+        public function showUsers(){
+            $permission = true;
+            $notpermission = false; 
+            $usersadmin = $this->modelUsers->getAdministrators($permission); 
+            $usersnotadmin= $this->modelUsers->getNotAdministrators($notpermission);
+            $this->view->viewUsers($usersadmin, $usersnotadmin); 
+        }
+
+        public function removePermission($id){
+            $this->modelUsers->offPermission($id);
+            header('Location: ' . BASE_URL . "users");
+        }
+
+        public function givePermission($id){
+            $this->modelUsers->onPermission($id);
+            header('Location: ' . BASE_URL . "users");
+        }
+
         public function deleteUser($id){
             $this->modelUsers->delete($id);
-            header('Location: ' . BASE_URL . "administer");
+            header('Location: ' . BASE_URL . "users");
         }
     }
