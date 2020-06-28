@@ -8,7 +8,11 @@
         $this->getSmarty()->assign('error', $error);
         $this->getSmarty()->display('admin.login.tpl');
 
+    }
 
+    public function ViewFormRegistry($error = null){
+        $this->getSmarty()->assign('error', $error);
+        $this->getSmarty()->display('admin.registry.tpl');
     }
     
 

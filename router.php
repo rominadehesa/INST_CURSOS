@@ -41,12 +41,19 @@
             $controller = new AutController();
             $controller->showLogin();
         break;
+        case 'registry':
+            $controller = new AutController();
+            $controller->showRegistry();
+        break;
+        case 'newuser':
+            $controller = new AutController();
+            $controller->PostRegistry();
+        break;
         case "logout": 
             $controller = new AutController();
             $controller->logout();
         break;
-
-        case 'verify':
+         case 'verify':
             $controller = new AutController();
             $controller->verification();
         break;
@@ -106,6 +113,23 @@
         break;
 
         // ABM usarios
+        case 'users': 
+            $controller = new AdminController();
+            $controller->showUsers();
+        break;
+
+        // dar-quitar permiso de administracion
+
+        case 'onpermission':
+            $controller = new AdminController();
+            $controller->givePermission($parametros[1]);
+        break;
+
+        case 'offpermission':
+            $controller = new AdminController();
+            $controller->removePermission($parametros[1]);
+        break;
+
         case 'deleteuser':
             $controller = new AdminController();
             $controller->deleteUser($parametros[1]);

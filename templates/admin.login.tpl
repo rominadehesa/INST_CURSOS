@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand">IDC Administrador</a>
+                <a class="navbar-brand">Administrador</a>
                 <a class="btn btn-dark" href="home">Volver</a>
             </nav>
         </div>

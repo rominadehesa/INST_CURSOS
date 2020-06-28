@@ -15,6 +15,10 @@
         public function showLogin(){
             $this->view->ViewFormLogin(); 
         }
+        //formulario para que el usuario se registre
+        public function showRegistry(){
+            $this->view->ViewFormRegistry();
+        }
         //verificar que el usuario esta registrado
         public function verification(){
             $usuario = $_POST['usuario'];
@@ -33,6 +37,26 @@
             } else {
                 $this->view->ViewFormLogin('Datos invalidos'); 
             }
+        }
+
+        public function PostRegistry(){
+            $usuario = $_POST['usuario'];
+            $password = $_POST['contraseña'];
+            //encriptar contraseña 
+            
+            $contraseña = $this->PasswordSegurity($password);
+            //if (!empty($usuario) || !empty($contraseña)) {
+                $this->model->newUser($usuario, $contraseña); //funciona hasta aca
+            //}
+            //else {
+            //    $this->view->ViewFormRegistry('Datos incompletos'); 
+            //}
+        }
+
+        private function PasswordSegurity($password){
+            $clave = $password;
+            $clave_encriptada = password_hash($clave, PASSWORD_DEFAULT);
+            return $clave_encriptada; 
         }
 
         public function logout() {
