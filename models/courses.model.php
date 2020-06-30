@@ -55,10 +55,18 @@
         return $target;
     }
     //Edita un curso 
-    public function edit($idcurso, $curso, $descripcion, $duracion, $idarea){
-        $sentencia = $this->getDb()->prepare("UPDATE cursos SET curso = ?, descripcion = ?, duracion = ? , id_area_fk = ? 
+    public function edit($idcurso, $curso, $descripcion, $duracion, $idarea, $imagen = null){
+        $pathImg=null;
+        if ($imagen)
+            $pathImg = $this->uploadImage($imagen);
+        $sentencia = $this->getDb()->prepare("UPDATE cursos SET curso = ?, descripcion = ?, duracion = ? , id_area_fk = ? , imagen = ?
         WHERE id_curso = ?");
-        $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $idcurso]);
+        return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $idcurso, $pathImg]);
+    }
+
+    public function deleteImagen($id){
+        $sentencia = $this->getDb()->prepare('UPDATE cursos SET imagen= ? WHERE id_curso = ?');
+        return $sentencia->execute([null, $id]);
     }
 
 }

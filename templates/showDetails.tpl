@@ -15,9 +15,9 @@
         {$detalle->descripcion}</li>
         <li class="list-group-item list-group-item-ligth">
         Duracion: {$detalle->duracion} meses</li>
-        <li class="list-group-item text-white">
+        
         {if ($detalle->imagen)}
-            <img src="./{$detalle->imagen}"/>
+            <li class="list-group-item text-white"> <img src="./{$detalle->imagen}"/>
         {/if}
         </li>
         </div>

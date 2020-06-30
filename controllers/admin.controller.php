@@ -109,7 +109,7 @@
             if($success) {
                 header('Location: ' . BASE_URL . "courses");
             } else {
-                $this->viewCourses->viewError("Campos incompletos");
+                $this->view->viewFormCourse($areas, "Campos incompletos");
             }
         }    
             
@@ -136,14 +136,39 @@
             $cursos = $this->modelCourses->getCourse($idcurso);
             
 
-            if (!empty($idcurso) && !empty($curso) && !empty($descripcion) && !empty($duracion)){
-                $this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea);
-                header('Location: ' . BASE_URL . "administer");
-            } else {
+            if (empty($curso) || empty($descripcion) || empty($duracion)){
                 $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
             }
-        }
+            else{
+                
+                    if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || 
+                    $_FILES['input_name']['type'] == "image/png"){
+                    $success = $this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea, $_FILES['input_name']['tmp_name']);
+                }
+             
         
+            else{
+                $success=$this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea);
+            }
+         
+        if($success) {
+            header('Location: ' . BASE_URL . "courses");
+        } else {
+            $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
+        }
+    }
+}   
+
+        public function deleteImg($id){
+            $areas = $this->modelAreas->getAllAreas();
+            $cursos = $this->modelCourses->getCourse($id);
+            $dlt = $this->modelCourses->deleteImagen($id); 
+            if($dlt){
+                header('Location: ' . BASE_URL . "administer");
+            } else {
+                $this->view->viewFormEditCourse($areas, $cursos, "no se puedo eliminar la imagen");
+            }
+        }
         //ABM usuarios
 
         public function showUsers(){

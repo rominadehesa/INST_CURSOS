@@ -111,6 +111,10 @@
             $controller = new AdminController();
             $controller->editCourse();
         break;
+        case 'deleteimg':
+            $controller = new AdminController();
+            $controller->deleteImg($parametros[1]);
+        break; 
 
         // ABM usarios
         case 'users': 
