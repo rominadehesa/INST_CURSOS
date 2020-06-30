@@ -1,5 +1,5 @@
 {include 'head.tpl'}
-{include 'admin.nav.tpl'}
+{include 'nav.tpl'}
 <div class="container">
     <div class="row">
         <div class="col-12">

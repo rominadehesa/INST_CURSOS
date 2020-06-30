@@ -6,8 +6,6 @@
 
         public function __construct(){
             parent::__construct();
-            $username = HelperAuth::userLogged();
-            $this->getSmarty()->assign('username', $username);
         }
 
         //Vista administrador

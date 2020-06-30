@@ -19,6 +19,18 @@
             }
         }
 
+        static public function isLogged() {
+            self::start(); 
+            return (isset($_SESSION['IS_LOGGED']));
+        }
+
+        static public function isAdmin() {
+            self::start(); 
+            if(isset($_SESSION['IS_LOGGED'])){
+                return ($_SESSION['PERMISSION']);
+            }
+        }
+
         static public function userLogged() {
             self::start();
             if (isset($_SESSION['USERNAME'])) {
