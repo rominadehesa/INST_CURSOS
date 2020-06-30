@@ -38,6 +38,7 @@
         public function showFormAddArea(){
             $this->view->viewFormArea();
         }
+        
         //agrega un area
         public function addArea(){
             $area=$_POST['x'];
@@ -57,11 +58,14 @@
             header('Location: ' . BASE_URL . "administer");
         }
         //muestra el formulario para modificar un area
+
         public function showFormEditArea($id){
             $areas=$this->modelAreas->getArea($id);
             $this->view->viewFormEditArea($areas);
         }
+
         //edita un area
+
         public function editArea(){
             $area = $_POST['x'];
             $id = $_POST['id'];
@@ -76,13 +80,15 @@
 
         // ABM CURSOS
 
-        
         //muestra el formulario para agregar un curso
+
         public function showFormAddCourse(){
             $areas=$this->modelAreas->getAllAreas();
             $this->view->viewFormCourse($areas);
         }
+
         //agrega un curso
+
         public function addCourse(){
             $curso=$_POST['curso']; 
             $descripcion=$_POST['descripcion'];
@@ -91,40 +97,40 @@
             $areas=$this->modelAreas->getAllAreas();
 
             if(empty($curso) || empty($descripcion)|| empty($duracion)){
-            $this->view->viewFormCourse($areas, "Campos incompletos");
-            }
-
-            else{
-
-                if($_FILES['input_name']['type'] == "image/jpg" ||
-            $_FILES['input_name']['type'] == "image/jpeg" |
-            $_FILES['input_name']['type'] == "image/png"){
-                $success = $this->modelCourses->insertCourse($curso, $descripcion, 
-                $duracion, $idarea, $_FILES['input_name']['tmp_name']);
-            } else {
-                $success = $this->modelCourses->insertCourse($curso, $descripcion, 
-                $duracion, $idarea);
-            }
-        
-            if($success) {
-                header('Location: ' . BASE_URL . "courses");
-            } else {
                 $this->view->viewFormCourse($areas, "Campos incompletos");
             }
-        }    
-            
+            else{
+                if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" |
+                $_FILES['input_name']['type'] == "image/png"){
+                    $success = $this->modelCourses->insertCourse($curso, $descripcion, 
+                    $duracion, $idarea, $_FILES['input_name']['tmp_name']);
+                }else {
+                    $success = $this->modelCourses->insertCourse($curso, $descripcion, 
+                    $duracion, $idarea);
+                }
+        
+                if($success) {
+                    header('Location: ' . BASE_URL . "courses");
+                } else {
+                    $this->view->viewFormCourse($areas, "Campos incompletos");
+                }
+            }    
         }
+
         //eliminar curso
+
         public function deleteCourse($id){
             $this->modelCourses->delete($id);
             header('Location: ' . BASE_URL . "administer");
         }
         //muestra el formulario para editar un curso
+
         public function showFormEditCourse($id){
             $curso = $this->modelCourses->getCourse($id);            
             $areas = $this->modelAreas->getAllAreas();
             $this->view->viewFormEditCourse($areas, $curso);
         }
+
         // edita un curso
         public function editCourse(){
             $idcurso = $_POST['idcurso'];
@@ -140,25 +146,22 @@
                 $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
             }
             else{
-                
-                    if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || 
-                    $_FILES['input_name']['type'] == "image/png"){
+                if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){
                     $success = $this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea, $_FILES['input_name']['tmp_name']);
                 }
-             
-        
-            else{
-                $success=$this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea);
-            }
+                else{
+                    $success=$this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea);
+                }
          
-        if($success) {
-            header('Location: ' . BASE_URL . "courses");
-        } else {
-            $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
-        }
-    }
-}   
+                if($success) {
+                    header('Location: ' . BASE_URL . "courses");
+                } else {
+                    $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
+                }
+            }
+        }   
 
+        // borrar la imagen
         public function deleteImg($id){
             $areas = $this->modelAreas->getAllAreas();
             $cursos = $this->modelCourses->getCourse($id);
@@ -169,7 +172,9 @@
                 $this->view->viewFormEditCourse($areas, $cursos, "no se puedo eliminar la imagen");
             }
         }
+
         //ABM usuarios
+        //mostrar todos los usuarios en dos grupos(administridores y no administradores)
 
         public function showUsers(){
             $permission = true;
@@ -179,17 +184,21 @@
             $this->view->viewUsers($usersadmin, $usersnotadmin); 
         }
 
+        //quitar permiso de administrador  
         public function removePermission($id){
             $this->modelUsers->offPermission($id);
             header('Location: ' . BASE_URL . "users");
             
         }
 
+        //dar permiso de administrador
+
         public function givePermission($id){
             $this->modelUsers->onPermission($id);
             header('Location: ' . BASE_URL . "users");
         }
 
+        //borrar un usuario
         public function deleteUser($id){
             $this->modelUsers->delete($id);
             header('Location: ' . BASE_URL . "users");

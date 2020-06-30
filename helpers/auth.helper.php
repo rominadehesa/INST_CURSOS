@@ -14,7 +14,6 @@
                 header('Location: ' . BASE_URL . 'login');
                 die();
             }
-
         }
 
         static public function userLogged() {
@@ -24,6 +23,22 @@
             }
         return false;
         }
+
+        static public function login($user) {
+            self::start();
+                //logueo al usuario
+                $_SESSION['IS_LOGGED'] = true;
+                $_SESSION['ID_USER'] = $user->id_usuario;
+                $_SESSION['USERNAME'] = $user->username;
+                $_SESSION['PERMISSION'] = $user->permission;
+        }
+
+        // destruye la sesion 
+        static public function logout() {
+            self::start();
+            session_destroy();
+        }
+
         
 
     }

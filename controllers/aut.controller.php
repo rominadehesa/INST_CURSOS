@@ -1,6 +1,7 @@
 <?php
     require_once 'views/aut.view.php';
     require_once 'models/users.model.php'; 
+    require_once 'helpers/auth.helper.php';
 
     class AutController {
 
@@ -22,15 +23,10 @@
 
         //verificacion
         public function verify($usuario, $password){
-            $usuaria = $this->model->getUser($usuario);
-            if ($usuaria && password_verify($password, $usuaria->password)){
-            //abro sesion y guardo al usuario
-            session_start();
-                $_SESSION['IS_LOGGED'] = true;
-                $_SESSION['ID_USER'] = $usuaria->id_usuario;
-                $_SESSION['USERNAME'] = $usuaria->username;
-                $_SESSION['PERMISSION'] = $usuaria->permission;
-            return true;
+            $us = $this->model->getUser($usuario);
+            if ($us && password_verify($password, $us->password)){
+                HelperAuth::login($us);
+                return true;
             } else {
                 return false; 
             }
@@ -77,13 +73,6 @@
             if($newuser){
                 $this->verify($usuario, $password);
                 header("Location: " . BASE_URL . 'home');
-
-
-
-                
-            }
-            else {
-                echo 'no se pudo postear el user';
             }
         }
 
@@ -94,8 +83,7 @@
         }
 
         public function logout() {
-            session_start();
-            session_destroy();
+            HelperAuth::logout();
             header("Location: " . BASE_URL . 'home');
         }
     }
