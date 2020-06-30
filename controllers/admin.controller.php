@@ -22,7 +22,7 @@
             $this->modelUsers = new UserModel;
             $this->view = new AdminView;
             $this->viewCourses = new CoursesView;
-            HelperAuth::checkUserLogged(); // antes de ejecutar las funciones de este controlador, va a verificar que el usuario este logueado 
+            HelperAuth::checkUserLoggedAdmin(); // antes de ejecutar las funciones de este controlador, va a verificar que el usuario este logueado 
         }
 
         //configuracion general
@@ -182,6 +182,7 @@
         public function removePermission($id){
             $this->modelUsers->offPermission($id);
             header('Location: ' . BASE_URL . "users");
+            
         }
 
         public function givePermission($id){

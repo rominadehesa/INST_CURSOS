@@ -7,12 +7,14 @@
         }
 
         //Verifica que exista un usuario logueado
-        static public function checkUserLogged() {
+        static public function checkUserLoggedAdmin() {
             self::start();  
-            if (!isset($_SESSION['IS_LOGGED'])) {
+            if (!isset($_SESSION['IS_LOGGED']) || ($_SESSION ['PERMISSION']!=1)) {
+
                 header('Location: ' . BASE_URL . 'login');
                 die();
             }
+
         }
 
         static public function userLogged() {
@@ -22,5 +24,6 @@
             }
         return false;
         }
+        
 
     }

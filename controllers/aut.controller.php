@@ -21,15 +21,15 @@
         }
 
         //verificacion
-        private function verify($usuario, $password){
-            $user = $this->model->getUser($usuario);
-            if ($user && password_verify($password, $user->password)){
+        public function verify($usuario, $password){
+            $usuaria = $this->model->getUser($usuario);
+            if ($usuaria && password_verify($password, $usuaria->password)){
             //abro sesion y guardo al usuario
             session_start();
                 $_SESSION['IS_LOGGED'] = true;
-                $_SESSION['ID_USER'] = $user->id_usuario;
-                $_SESSION['USERNAME'] = $user->username;
-                $_SESSION['PERMISSION'] = $user->permission;
+                $_SESSION['ID_USER'] = $usuaria->id_usuario;
+                $_SESSION['USERNAME'] = $usuaria->username;
+                $_SESSION['PERMISSION'] = $usuaria->permission;
             return true;
             } else {
                 return false; 
@@ -50,6 +50,7 @@
         public function VerifyRegistry(){
             $usuario = $_POST['usuario'];
             $contraseña = $_POST['contraseña'];
+            
 
             //chequear que el nombre del usuario no exista
             $user = $this->model->getUser($usuario);
@@ -71,6 +72,18 @@
             }else {
                 $this->view->ViewFormRegistry('Ha ocurrido un error');
                 die(); 
+            }
+
+            if($newuser){
+                $this->verify($usuario, $password);
+                header("Location: " . BASE_URL . 'home');
+
+
+
+                
+            }
+            else {
+                echo 'no se pudo postear el user';
             }
         }
 
