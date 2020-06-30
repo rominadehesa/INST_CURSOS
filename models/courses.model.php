@@ -40,25 +40,26 @@
         $sentencia->execute([$id_curso]);
     }
     //Agrega un curso con su area
-    public function insertCourse($curso, $descripcion, $duracion, $idarea, $imagen = null){
+    public function insertCourse($curso, $descripcion, $duracion, $idarea, $imagen = null, $imgname = null){
         $pathImg=null; 
         if ($imagen)
-            $pathImg = $this->uploadImage($imagen); //lo que nos devuelve la funcion uploadImage
+            $pathImg = $this->uploadImage($imagen, $imgname); //lo que nos devuelve la funcion uploadImage
         
         $sentencia = $this->getDb()->prepare("INSERT INTO cursos(curso, descripcion, duracion, id_area_fk, imagen) VALUES (?, ?, ?, ?, ?)");
         return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg]);
     }
 
-    private function uploadImage($imagen){
-        $target = 'upload/courses/' . uniqid() . '.jpg';
+    private function uploadImage($imagen, $imgname){
+        $target = 'upload/courses/' . uniqid("", true) . "." 
+        . strtolower(pathinfo($imgname, PATHINFO_EXTENSION));
         move_uploaded_file($imagen, $target); 
         return $target;
     }
     //Edita un curso 
-    public function edit($idcurso, $curso, $descripcion, $duracion, $idarea, $imagen = null){
+    public function edit($idcurso, $curso, $descripcion, $duracion, $idarea, $imagen = null, $imgname = null){
         $pathImg=null;
         if ($imagen)
-            $pathImg = $this->uploadImage($imagen);
+            $pathImg = $this->uploadImage($imagen, $imgname);
         $sentencia = $this->getDb()->prepare("UPDATE cursos SET curso = ?, descripcion = ?, duracion = ? , id_area_fk = ? , imagen = ?
         WHERE id_curso = ?");
         return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $idcurso, $pathImg]);

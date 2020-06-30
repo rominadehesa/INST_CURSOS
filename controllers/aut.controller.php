@@ -71,7 +71,7 @@
             }
 
             if($newuser){
-                $this->verify($usuario, $password);
+                $this->verify($usuario, $contraseña);
                 header("Location: " . BASE_URL . 'home');
             }
         }

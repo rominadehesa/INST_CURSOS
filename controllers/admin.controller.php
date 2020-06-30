@@ -103,7 +103,7 @@
                 if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" |
                 $_FILES['input_name']['type'] == "image/png"){
                     $success = $this->modelCourses->insertCourse($curso, $descripcion, 
-                    $duracion, $idarea, $_FILES['input_name']['tmp_name']);
+                    $duracion, $idarea, $_FILES['input_name']['tmp_name'], $_FILES['input_name']['name']);
                 }else {
                     $success = $this->modelCourses->insertCourse($curso, $descripcion, 
                     $duracion, $idarea);
@@ -165,8 +165,10 @@
         public function deleteImg($id){
             $areas = $this->modelAreas->getAllAreas();
             $cursos = $this->modelCourses->getCourse($id);
-            $dlt = $this->modelCourses->deleteImagen($id); 
+            $dlt = $this->modelCourses->deleteImagen($id);
+            
             if($dlt){
+                unlink($cursos->imagen);
                 header('Location: ' . BASE_URL . "administer");
             } else {
                 $this->view->viewFormEditCourse($areas, $cursos, "no se puedo eliminar la imagen");

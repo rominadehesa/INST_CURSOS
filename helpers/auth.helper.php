@@ -9,9 +9,12 @@
         //Verifica que exista un usuario logueado
         static public function checkUserLoggedAdmin() {
             self::start();  
-            if (!isset($_SESSION['IS_LOGGED']) || ($_SESSION ['PERMISSION']!=1)) {
+            if (!isset($_SESSION['IS_LOGGED'])) {
 
                 header('Location: ' . BASE_URL . 'login');
+                die();
+            } else if (isset($_SESSION['IS_LOGGED']) && ($_SESSION ['PERMISSION']!=1)){
+                header('Location: ' . BASE_URL . 'home');
                 die();
             }
         }
