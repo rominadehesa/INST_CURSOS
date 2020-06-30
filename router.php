@@ -47,7 +47,7 @@
         break;
         case 'newuser':
             $controller = new AutController();
-            $controller->PostRegistry();
+            $controller->VerifyRegistry();
         break;
         case "logout": 
             $controller = new AutController();
@@ -55,7 +55,7 @@
         break;
          case 'verify':
             $controller = new AutController();
-            $controller->verification();
+            $controller->verifyLogin();
         break;
         //acciones privadas (configuracion)
         case 'administer':

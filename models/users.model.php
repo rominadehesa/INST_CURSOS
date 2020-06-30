@@ -24,7 +24,7 @@ class UserModel  extends Model{
     //registar nuevo usuario
     public function newUser($usuario, $contraseña){
         $sentencia = $this->getDb()->prepare('INSERT INTO usuarios(username, password, permission) VALUES (?, ?, ?)');
-        $sentencia->execute([$usuario, $contraseña, 0]);
+        return $sentencia->execute([$usuario, $contraseña, 0]);
     } 
 
     //funcion que borra un usuario

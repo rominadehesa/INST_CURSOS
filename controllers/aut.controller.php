@@ -19,13 +19,9 @@
         public function showRegistry(){
             $this->view->ViewFormRegistry();
         }
-        //verificar que el usuario esta registrado
-        public function verification(){
-            $usuario = $_POST['usuario'];
-            $password = $_POST['contraseña'];
-        
-            //busco el usuario 
 
+        //verificacion
+        private function verify($usuario, $password){
             $user = $this->model->getUser($usuario);
             if ($user && password_verify($password, $user->password)){
             //abro sesion y guardo al usuario
@@ -33,24 +29,49 @@
                 $_SESSION['IS_LOGGED'] = true;
                 $_SESSION['ID_USER'] = $user->id_usuario;
                 $_SESSION['USERNAME'] = $user->username;
-            header("Location: " . BASE_URL . "administer");
+                $_SESSION['PERMISSION'] = $user->permission;
+            return true;
             } else {
-                $this->view->ViewFormLogin('Datos invalidos'); 
+                return false; 
+            }
+        }
+        //verificar que el usuario esta registrado
+        public function verifyLogin(){
+            $usuario = $_POST['usuario'];
+            $password = $_POST['contraseña'];
+            $session = $this->verify($usuario, $password);
+            if($session){
+                header("Location: " . BASE_URL . 'administer');
+            } else {
+                $this->view->ViewFormLogin("Datos invalidos");
             }
         }
 
-        public function PostRegistry(){
+        public function VerifyRegistry(){
             $usuario = $_POST['usuario'];
-            $password = $_POST['contraseña'];
+            $contraseña = $_POST['contraseña'];
+
+            //chequear que el nombre del usuario no exista
+            $user = $this->model->getUser($usuario);
+            if ($user){
+                $this->view->ViewFormRegistry('Usuario ya existente');
+                die();
+            }
+
             //encriptar contraseña 
-            
-            $contraseña = $this->PasswordSegurity($password);
-            //if (!empty($usuario) || !empty($contraseña)) {
-                $this->model->newUser($usuario, $contraseña); //funciona hasta aca
-            //}
-            //else {
-            //    $this->view->ViewFormRegistry('Datos incompletos'); 
-            //}
+            if (!empty($usuario) && !empty($contraseña)) {
+                $password = $this->PasswordSegurity($contraseña); 
+            } else {
+                $this->view->ViewFormRegistry('Datos incompletos');
+                die(); 
+            }
+            //postaer usuario
+            if(!empty($password)){
+                $newuser = $this->model->newUser($usuario, $password);
+            }else {
+                $this->view->ViewFormRegistry('Ha ocurrido un error');
+                die(); 
+            }
         }
 
         private function PasswordSegurity($password){
