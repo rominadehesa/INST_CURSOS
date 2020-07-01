@@ -18,7 +18,7 @@
         return $comentario;
     }
 
-    public function delete($id){
+    public function deleteComment($id){
         $sentencia = $this->getDb()->prepare("DELETE FROM comentarios WHERE id_comentario = ?");
         $sentencia->execute([$id]);
     }

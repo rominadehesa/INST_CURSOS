@@ -55,16 +55,15 @@
         public function deleteComment($params = []){
             $id = $params[':ID'];
             $comentario = $this->model->get($id);
-        
-            // verifico si existe ese comentario
-            if (empty($comentario)) {
-                $this->view->response("no existe comentario con id {$id}", 404);
-                die();
+
+            if (!empty($comentario)) {
+                $this->model->deleteComment($id);
+                $this->view->response("El comentario con id {$id} se eliminó correctamente", 200);
+    
             }
-            // si existe elimina el comentario
-            $this->model->delete($id);
-            $this->view->response("El comentario con id {$id} se eliminó correctamente", 200);
+            else{
+                $this->view->response("No existe comentario para eliminar con id {$id}", 404);
+    
+            }
         }
-
-
 }
