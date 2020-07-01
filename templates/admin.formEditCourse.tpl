@@ -38,9 +38,8 @@
                 
                 </div>
                 <div>
-                <label> Cargar otra imagen: </label>
+                <label> Cargar imagen: </label>
                 <input type="file" name="input_name" id="imageToUpload">
-                
                 </div>
                 </div>
                 <div>
