@@ -4,9 +4,9 @@
     class CommentsModel extends Model{
     
     //Trae todas los comentarios
-    public function getAll(){
-        $sentencia = $this->getDb()->prepare("SELECT * FROM comentarios"); 
-        $sentencia->execute();
+    public function getAll($id){
+        $sentencia = $this->getDb()->prepare("SELECT * FROM comentarios WHERE id_curso_fk = ?"); 
+        $sentencia->execute([$id]);
         $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ); 
         return $comentarios;
     }
