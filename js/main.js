@@ -1,38 +1,26 @@
-"use strict" 
-document.addEventListener('DOMContentLoaded', function() {
+"use strict"; 
 
-// definimos la app Vue
+//instalo el Vue
 let app = new Vue({
     el:"#app-comments",
-    data: {
-        counter:0, 
+    data: { 
+        
         comments:[]
     }
 });
 
-let count2= document.getElementById("btn-restar");
-if (count2){
-    count2.addEventListener('click', e => app.counter--);
-}
-let count= document.getElementById("btn-sumar");
-if (count){
-    count.addEventListener('click', e => app.counter++);
-}
-
-
-
 let idCurso= document.querySelector("#idcurso").value;
+let username= document.querySelector("#username").value;
+
 loadComments(idCurso);
 
 function loadComments(idCurso) {
     
     fetch('api/courses/'+idCurso+'/comments')
     .then(response => response.json())
-    .then(jasonComment => {
+    .then(comentarios => {
         
-        app.comments = jasonComment; 
+        app.comments = comentarios;
         
     });
 }
-
-});

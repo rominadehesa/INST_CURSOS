@@ -8,6 +8,7 @@
         <ul class="list-group">
 
         <input id="idcurso" type="hidden" value={$detalle->id_curso}>
+        <input id="username" type="hidden" value={$username}>
 
         <li id="titulo" class="list-group-item text-white">
          {$detalle->curso}</li>
@@ -28,6 +29,7 @@
         <div class="col-md-12"> 
         {include 'vue/sectionComments.vue'}
         </div>
+        
     </div>
 </div>
 <script src="js/main.js"></script>

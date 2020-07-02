@@ -53,12 +53,6 @@
             $this->view->response($comentarios, 200);
         }
 
-        public function gettodo(){
-            $comentarios=$this->model->getprueba();
-            //var_dump($areas); 
-            $this->view->response($comentarios, 200);
-        }
-
         public function getAverage($params = []){
             $id = $params[':ID'];
             $comentarios=$this->model->getAll($id);
@@ -70,7 +64,7 @@
             }
 
             $promedio = $suma/$contador;
-            var_dump($promedio);
+            //var_dump($promedio);
             return $promedio;
         }
 

@@ -9,7 +9,6 @@ $router= new Router();
 //creo la tabla de ruteo
 
 $router->addRoute('courses/:ID/comments', 'GET', 'CommentsApiController', 'getComments'); //trae todos los comentarios
-$router->addRoute('courses/comments', 'GET', 'CommentsApiController', 'gettodo'); // de prueba
 $router->addRoute('courses/:ID/average', 'GET', 'CommentsApiController', 'getAverage');
 $router->addRoute('comments/:ID', 'DELETE', 'CommentsApiController', 'deleteComment'); //borra un comentario
 $router->addRoute('courses/:ID/comment', 'POST', 'CommentsApiController', 'addComment'); //postear un comentario
