@@ -1,11 +1,13 @@
 {literal}
 <section id="app-comments">
 
+      
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h4 class="mb-0"> {{cantidad de comentarios}} Comentarios</h4>
-            <span>{{nombre del ususario}}</span>
+            <h4 class="mb-0"> Comentarios</h4>
+            <span>yula</span>
             
+      </li> 
         </div>
 
   <div class="card" class="col-md-12">
@@ -20,6 +22,6 @@
     </div>
     </li>
   </ul>
-</div>
+</div> 
 </section>
 {/literal}

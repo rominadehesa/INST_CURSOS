@@ -6,6 +6,9 @@
         <div class="col-md-12"> 
 
         <ul class="list-group">
+
+        <input id="idcurso" type="hidden" value={$detalle->id_curso}>
+
         <li id="titulo" class="list-group-item text-white">
          {$detalle->curso}</li>
         
