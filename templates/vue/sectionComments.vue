@@ -16,9 +16,9 @@
     {{comment.comentario}}
     
     <div id="buttons">
-    <button id="btn-sumar">=)</button>
-    <span>{{counter}}</span>
     <button id="btn-restar">=(</button>
+    <span>{{counter}}</span>
+    <button id="btn-sumar">=)</button>
     </div>
     </li>
   </ul>

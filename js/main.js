@@ -1,17 +1,17 @@
-"use strict"
-let idCurso = document.querySelector("#idcurso").value;
+"use strict" 
 
-document.addEventListener('DOMContentLoaded', function () {
+
 // definimos la app Vue
 let app = new Vue({
     el:"#app-comments",
-    //el: "#buttons",
     data: {
-        //counter:0, 
+        counter:0, 
         comments:[]
     }
 });
 
+
+let idCurso= document.querySelector("#idcurso").value;
 loadComments(idCurso);
 
 function loadComments(idCurso) {
@@ -25,7 +25,6 @@ function loadComments(idCurso) {
     });
 }
 
-});
 
 let count= document.getElementById("btn-sumar");
 if (count){
@@ -37,3 +36,4 @@ let count2= document.getElementById("btn-restar");
 if (count2){
     count2.addEventListener('click', e => app.counter--);
 }
+
