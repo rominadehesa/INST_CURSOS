@@ -1,5 +1,5 @@
 "use strict" 
-
+document.addEventListener('DOMContentLoaded', function() {
 
 // definimos la app Vue
 let app = new Vue({
@@ -9,6 +9,16 @@ let app = new Vue({
         comments:[]
     }
 });
+
+let count2= document.getElementById("btn-restar");
+if (count2){
+    count2.addEventListener('click', e => app.counter--);
+}
+let count= document.getElementById("btn-sumar");
+if (count){
+    count.addEventListener('click', e => app.counter++);
+}
+
 
 
 let idCurso= document.querySelector("#idcurso").value;
@@ -25,15 +35,4 @@ function loadComments(idCurso) {
     });
 }
 
-
-let count= document.getElementById("btn-sumar");
-if (count){
-    count.addEventListener('click', e => app.counter++);
-
-}
-
-let count2= document.getElementById("btn-restar");
-if (count2){
-    count2.addEventListener('click', e => app.counter--);
-}
-
+});

@@ -15,11 +15,11 @@
     <li v-for= "comment in comments" class="list-group-item">
     {{comment.comentario}}
     
-    <div id="buttons">
-    <button id="btn-restar">=(</button>
-    <span>{{counter}}</span>
-    <button id="btn-sumar">=)</button>
-    </div>
+    
+    <button id="btn-restar" class="btn btn-dark">=(</button>
+    <span id="score">{{counter}}</span>
+    <button id="btn-sumar" class="btn btn-dark">=)</button>
+    
     </li>
   </ul>
 </div> 

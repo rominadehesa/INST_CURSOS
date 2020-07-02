@@ -170,7 +170,8 @@
             if($dlt){
                 unlink($cursos->imagen);
                 header('Location: ' . BASE_URL . "administer");
-            } else {
+            } 
+            else {
                 $this->view->viewFormEditCourse($areas, $cursos, "no se puedo eliminar la imagen");
             }
         }

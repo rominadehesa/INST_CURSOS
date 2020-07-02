@@ -8,7 +8,9 @@
     </div>
     <div class="row">
         <div class="col-12">
+
             <form action="renamecourse" method="post" enctype="multipart/form-data">
+            
                 <input type="hidden" name="idcurso" value="{$curso->id_curso}">
                 <div>
                 <label>Nombre del curso: </label>
@@ -31,17 +33,17 @@
                     {/foreach}
                 </select>
                 <div>
+                
                 {if $curso->imagen}
                    <img src="./{$curso->imagen}"/> 
                    <a href="deleteimg/{$curso->id_curso}" class="btn btn-primary">Eliminar imagen</a>
                 {/if}
                 
-                </div>
-                <div>
+               
                 <label> Cargar imagen: </label>
                 <input type="file" name="input_name" id="imageToUpload">
                 </div>
-                </div>
+                
                 <div>
                 <button type="submit" class="btn btn-primary">Agregar</button> 
                 <a href="administer" class="btn btn-primary">Cancelar</a></div>
