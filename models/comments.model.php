@@ -11,13 +11,6 @@
         return $comentarios;
     }
 
-    public function getprueba(){
-        $sentencia = $this->getDb()->prepare("SELECT comentario FROM comentarios"); 
-        $sentencia->execute();
-        $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ); 
-        return $comentarios;
-    }
-
     public function get($id){
         $sentencia = $this->getDb()->prepare("SELECT comentario FROM comentarios WHERE id_comentario = ?");
         $sentencia->execute([$id]);
