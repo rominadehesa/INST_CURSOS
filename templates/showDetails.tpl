@@ -3,7 +3,7 @@
 {include 'nav.tpl'}
 <div class= "container">
     <div class="row">
-        <div class="col-12"> 
+        <div class="col-md-12"> 
 
         <ul class="list-group">
         <li id="titulo" class="list-group-item text-white">
@@ -21,5 +21,10 @@
         {/if}
         </li>
         </div>
+        
+        <div class="col-md-12"> 
+        {include 'vue/sectionComments.vue'}
+        </div>
     </div>
 </div>
+<script src="js/main.js"></script>
