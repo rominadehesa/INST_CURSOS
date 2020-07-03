@@ -1,26 +1,60 @@
 "use strict"; 
-
 //instalo el Vue
 let app = new Vue({
     el:"#app-comments",
     data: { 
-        
         comments:[]
     }
 });
 
-let idCurso= document.querySelector("#idcurso").value;
-let username= document.querySelector("#username").value;
+loadComments(); //al cargar la pagina se muestran todos los comentarios
 
-loadComments(idCurso);
-
-function loadComments(idCurso) {
-    
-    fetch('api/courses/'+idCurso+'/comments')
+function loadComments() {
+    let id= document.querySelector("#idcurso").value; //recuperamos el id del curso
+    fetch('api/courses/'+id+'/comments')
     .then(response => response.json())
     .then(comentarios => {
-        
-        app.comments = comentarios;
-        
-    });
+        app.comments = comentarios; //arreglo de comentarios
+
+    })
+    .catch(error =>console.log(error));
+}
+
+document.querySelector("#form-comentario")
+.addEventListener('submit', addComment); //envia el formulario que tiene ese id
+
+//funcion para postearun comentario
+function addComment(){
+    event.preventDefault(); 
+    
+    let idCurso= document.querySelector("#idcurso").value;
+    
+    //recuperamos los valores del formulario
+    let comentario = document.getElementById("comentario").value; 
+    let puntaje = document.getElementById("puntuacion").value;
+    let user =  document.getElementById("username").value;
+    let idcurso = idCurso;
+
+    //creamos el objeto
+    let info = {
+        "comentario": comentario,
+        "puntuacion": puntaje,
+        "id_usuario_fk": user,
+        "id_curso_fk": idcurso
+    }
+    console.log(info); 
+
+    fetch('api/courses/'+idCurso+'/comment', { 
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(info)
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .then(function() {
+        document.getElementById("comentario").value = " "; 
+        loadComments();
+    })
+    .catch(error =>console.log(error));
 }

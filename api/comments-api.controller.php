@@ -28,7 +28,7 @@
             
             $comentario = $body->comentario;
             $puntuacion = $body->puntuacion;
-            $id_usuario_fk = $this->getIdUser(); 
+            $id_usuario_fk = $body->id_usuario_fk;
             $id_curso_fk = $params[':ID'];
 
             $x = $this->model->insert($comentario, $puntuacion, $id_usuario_fk, $id_curso_fk); 
@@ -40,11 +40,11 @@
             }
         }
 
-        public  function getIdUser(){
+        /*public  function getIdUser(){
             $username = HelperAuth::userLogged();
             $user = $this->modelUser->getUser($username); 
             return $user->id_usuario;
-        }
+        }*/
     
         public function getComments($params = []){
             $id = $params[':ID'];
@@ -53,7 +53,7 @@
             $this->view->response($comentarios, 200);
         }
 
-        public function getAverage($params = []){
+        /*public function getAverage($params = []){
             $id = $params[':ID'];
             $comentarios=$this->model->getAll($id);
             $suma = 0; 
@@ -66,7 +66,7 @@
             $promedio = $suma/$contador;
             //var_dump($promedio);
             return $promedio;
-        }
+        }*/
 
         public function deleteComment($params = []){
             $id = $params[':ID'];
