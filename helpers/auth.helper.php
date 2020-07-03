@@ -31,6 +31,14 @@
             }
         }
 
+        static public function idUser() {
+            self::start();
+            if (isset($_SESSION['USERNAME'])) {
+                return $_SESSION['ID_USER'];
+            }
+        return false;
+        }
+
         static public function userLogged() {
             self::start();
             if (isset($_SESSION['USERNAME'])) {

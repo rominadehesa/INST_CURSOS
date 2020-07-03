@@ -5,8 +5,6 @@
 
     public function __construct(){
         parent::__construct();
-        $username = HelperAuth::userLogged();
-        $this->getSmarty()->assign('username', $username);
     }
 
     //vista del home
@@ -33,6 +31,7 @@
 
     //vista de los detalles de un curso 
     public function viewDetails($detalle){
+
         $this->getSmarty()->assign('detalle', $detalle);
         $this->getSmarty()->display('showDetails.tpl');
     }

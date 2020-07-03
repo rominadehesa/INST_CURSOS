@@ -15,6 +15,8 @@
         $this->getSmarty()->assign('session', $session);
         $administer = HelperAuth::isAdmin();
         $this->getSmarty()->assign('administer', $administer);
+        $iduser = HelperAuth::IdUser();
+        $this->getSmarty()->assign('iduser', $iduser);
     }    
 
     public function getSmarty() {
