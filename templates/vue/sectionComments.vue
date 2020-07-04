@@ -7,15 +7,15 @@
     <div class="card-header d-flex justify-content-between align-items-center">
       <h4 class="mb-0">Comentarios</h4>
         <span>
-          {{promedio}}
+          Promedio del curso: {{promedio}}
         </span>
     </div>
     
     <div class="card" class="col-md-12">
       <ul id= "list-comments"class="list-group list-group-flush">
         <li v-for= "comment in comments" class="list-group-item">
-        {{comment.comentario}} {{comment.puntuacion}} 
-        <button v-on:click="saludar(comment.id_comentario)">Borrar</button>
+        "{{comment.comentario}}" - Puntaje: {{comment.puntuacion}} 
+        <button v-on:click="borrar(comment.id_comentario)">Borrar</button>
         </li>
     </div>
 

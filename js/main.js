@@ -7,7 +7,7 @@ let app = new Vue({
         comments:[]
     },
     methods: {
-        saludar: function (id) {
+        borrar: function (id) {
             deleteComment(id);
         }
     }
