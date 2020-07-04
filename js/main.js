@@ -1,9 +1,12 @@
-"use strict"; 
+"use strict";
+
+let admin = document.getElementById("admin").value;
 //instalo el Vue
 let app = new Vue({
     el:"#app-comments",
     data: { 
         promedio:0,
+        isadmin: admin,
         comments:[]
     },
     methods: {

@@ -34,6 +34,8 @@
             <form method="post" id="form-comentario">
                 <input id="idcurso" type="hidden" value={$detalle->id_curso}>
                 <input id="username" type="hidden" value={$iduser}>
+                <input id="admin" type="hidden" value={$administer}>
+
                 
                 {if $session}
                     {$username}<input id="comentario" type="text" placeholder="Deje su comentario">

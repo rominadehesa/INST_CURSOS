@@ -14,8 +14,8 @@
     <div class="card" class="col-md-12">
       <ul id= "list-comments"class="list-group list-group-flush">
         <li v-for= "comment in comments" class="list-group-item">
-        "{{comment.comentario}}" - Puntaje: {{comment.puntuacion}} 
-        <button v-on:click="borrar(comment.id_comentario)">Borrar</button>
+        "{{comment.comentario}}" - Puntaje: {{comment.puntuacion}}
+        <button v-if="isadmin == 1" v-on:click="borrar(comment.id_comentario)">Borrar</button>
         </li>
     </div>
 
