@@ -30,7 +30,7 @@
         {include 'vue/sectionComments.vue'}
         </div>
 
-        <div class="card" class="col-md-12">
+        <div class="col-md-12">
             <form method="post" id="form-comentario">
                 <input id="comentario" type="text" placeholder="Deje su comentario">
                 <label>Puntaje</label>
