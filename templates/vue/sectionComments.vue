@@ -14,7 +14,7 @@
     <div class="card" class="col-md-12">
       <ul id= "list-comments"class="list-group list-group-flush">
         <li v-for= "comment in comments" class="list-group-item">
-          {{comment.comentario}}
+        {{comment.comentario}} {{comment.puntuacion}} <a :data-id="comment.id_comentario"  class="btn-delete" href="#">Eliminar</a> 
         </li>
     </div>
 

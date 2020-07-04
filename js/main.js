@@ -58,3 +58,6 @@ function addComment(){
     })
     .catch(error =>console.log(error));
 }
+
+document.querySelector("#form-comentario")
+.addEventListener('submit', addComment)

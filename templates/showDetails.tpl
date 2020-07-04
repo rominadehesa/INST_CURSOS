@@ -37,7 +37,7 @@
                 <input id="username" type="hidden" value={$iduser}>
                 
                 {if $session}
-                    <input id="comentario" type="text" placeholder="Deje su comentario">
+                    {$username}<input id="comentario" type="text" placeholder="Deje su comentario">
                     <label>Puntaje</label>
                     <select id="puntuacion">
                         <option value="1">1</option>
@@ -46,12 +46,9 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
+                    
                     <input type="submit" value="comentar">
-                    {if $administer ==1}
-
-                    <a href="login">Eliminar comentario</a>
-                        
-                    {/if}
+                   
                 {else}
                 <p>Para comentar, debe resgistrarse aqui - 
                 <a href="login">Resgistrarme</a></p>
