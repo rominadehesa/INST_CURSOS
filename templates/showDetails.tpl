@@ -38,7 +38,7 @@
                 {if $session}
                     {$username}<input id="comentario" type="text" placeholder="Deje su comentario">
                     <label>Puntaje</label>
-                    <select id="puntuacion">
+                    <select type="number" id="puntuacion">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

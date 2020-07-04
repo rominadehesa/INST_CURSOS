@@ -3,6 +3,7 @@
 let app = new Vue({
     el:"#app-comments",
     data: { 
+        promedio:0,
         comments:[]
     },
     methods: {
@@ -20,6 +21,16 @@ function loadComments() {
     .then(response => response.json())
     .then(comentarios => {
         app.comments = comentarios; //arreglo de comentarios
+        let suma=0;
+        let contador=0;
+        for (let comentario of comentarios){
+
+            let score= parseInt(comentario.puntuacion);
+            suma+=score;
+            contador++; 
+        }
+        let promedio=(suma/contador).toFixed(2);
+        app.promedio=promedio;
 
     })
     .catch(error =>console.log(error));
