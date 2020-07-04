@@ -32,7 +32,6 @@
 
         <div class="col-md-12">
             <form method="post" id="form-comentario">
-               
                 <input id="idcurso" type="hidden" value={$detalle->id_curso}>
                 <input id="username" type="hidden" value={$iduser}>
                 

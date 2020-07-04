@@ -4,6 +4,11 @@ let app = new Vue({
     el:"#app-comments",
     data: { 
         comments:[]
+    },
+    methods: {
+        saludar: function (id) {
+            deleteComment(id);
+        }
     }
 });
 
@@ -59,5 +64,17 @@ function addComment(){
     .catch(error =>console.log(error));
 }
 
-document.querySelector("#form-comentario")
-.addEventListener('submit', addComment)
+
+function deleteComment(id) {
+    fetch('api/comments/'+id, { 
+        method: 'DELETE',
+        headers: {'Content-Type':'application/json'}
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .then(function() {
+        loadComments();
+    })
+    .catch(error =>console.log(error));
+}
