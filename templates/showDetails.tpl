@@ -32,19 +32,20 @@
 
         <div class="col-md-12">
             <form method="post" id="form-comentario">
-                <input id="comentario" type="text" placeholder="Deje su comentario">
-                <label>Puntaje</label>
-                <select id="puntuacion">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+               
                 <input id="idcurso" type="hidden" value={$detalle->id_curso}>
-                <input id="username" type="text" value={$iduser}>
+                <input id="username" type="hidden" value={$iduser}>
                 
                 {if $session}
+                    <input id="comentario" type="text" placeholder="Deje su comentario">
+                    <label>Puntaje</label>
+                    <select id="puntuacion">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                     <input type="submit" value="comentar">
                     {if $administer ==1}
 
