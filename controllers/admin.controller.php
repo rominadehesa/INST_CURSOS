@@ -147,7 +147,7 @@
             }
             else{
                 if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){
-                    $success = $this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea, $_FILES['input_name']['tmp_name']);
+                    $success = $this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea, $_FILES['input_name']['tmp_name'], $_FILES['input_name']['name']);
                 }
                 else{
                     $success=$this->modelCourses->edit($idcurso, $curso, $descripcion, $duracion, $idarea);

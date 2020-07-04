@@ -40,34 +40,30 @@
         $sentencia->execute([$id_curso]);
     }
     //Agrega un curso con su area
-    public function insertCourse($curso, $descripcion, $duracion, $idarea, $imagen = null){
+    public function insertCourse($curso, $descripcion, $duracion, $idarea, $imagen = null, $imgname = null){
         $pathImg=null; 
         if ($imagen)
-            $pathImg = $this->uploadImage(); //lo que nos devuelve la funcion uploadImage
+            $pathImg = $this->uploadImage($imagen, $imgname); //lo que nos devuelve la funcion uploadImage
         
         $sentencia = $this->getDb()->prepare("INSERT INTO cursos(curso, descripcion, duracion, id_area_fk, imagen) VALUES (?, ?, ?, ?, ?)");
         return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg]);
     }
     
-    public function edit($idcurso, $curso, $descripcion, $duracion, $idarea, $imagen = null){
+    public function edit($idcurso, $curso, $descripcion, $duracion, $idarea, $imagen = null, $imgname = null){
         $pathImg=null; 
         if ($imagen)
-            $pathImg = $this->uploadImage();
+            $pathImg = $this->uploadImage($imagen, $imgname);
             
         $sentencia = $this->getDb()->prepare("UPDATE cursos SET curso = ?, descripcion = ?, duracion = ? , id_area_fk = ? , imagen = ?
         WHERE id_curso = $idcurso");
         return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg]);
     }
 
-    private function uploadImage(){
-        $nombreOriginal = $_FILES['input_name']['name'];
-        
-        $nombreFisico = $_FILES['input_name']['tmp_name'];
-        
+    private function uploadImage($imagen, $imgname){
         $target = 'upload/courses/'. uniqid("", true) . "." 
-        . strtolower(pathinfo($nombreOriginal, PATHINFO_EXTENSION));
+        . strtolower(pathinfo($imgname, PATHINFO_EXTENSION));
 
-        move_uploaded_file($nombreFisico, $target); 
+        move_uploaded_file($imagen, $target); 
         
         return $target;
     }
