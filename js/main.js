@@ -25,17 +25,18 @@ function loadComments() {
     .then(comentarios => {
         app.comments = comentarios;//arreglo de comentarios
         let suma=0;
-        let contador=1;
+        let contador=0;
 
         for (let comentario of comentarios){
-
-            let score= parseInt(comentario.puntuacion);
-            suma+=score;
-            contador=comentarios.length;
-             
+            suma= suma + parseInt(comentario.puntuacion);
+            contador ++;
         }
         let promedio=(suma/contador).toFixed(2);
         app.promedio=promedio;
+
+        if (contador == 0){
+            app.promedio = 0;
+        }
     
     })
     .catch(error =>console.log(error));
