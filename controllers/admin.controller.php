@@ -136,9 +136,15 @@
             $idarea = $_POST['idarea'];
             $areas = $this->modelAreas->getAllAreas();
             $cursos = $this->modelCourses->getCourse($idcurso);
-            
+            $imagen = $_FILES['input_name']['error'];
 
-            if (empty($curso) || empty($descripcion) || empty($duracion)){
+            //si no edita la imagen, deja la que estaba 
+            if ($imagen == 4){
+                $this->modelCourses->editNotImg($idcurso, $curso, $descripcion, $duracion, $idarea);
+                header('Location: ' . BASE_URL . "administer");
+            }
+
+            else if (empty($curso) || empty($descripcion) || empty($duracion)){
                 $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
             }
             else{

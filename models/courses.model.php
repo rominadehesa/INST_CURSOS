@@ -55,8 +55,8 @@
             $pathImg = $this->uploadImage($imagen, $imgname);
             
         $sentencia = $this->getDb()->prepare("UPDATE cursos SET curso = ?, descripcion = ?, duracion = ? , id_area_fk = ? , imagen = ?
-        WHERE id_curso = $idcurso");
-        return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg]);
+        WHERE id_curso = ?");
+        return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg, $idcurso]);
     }
 
     private function uploadImage($imagen, $imgname){
@@ -66,6 +66,12 @@
         //funcion para nombrar temporalmente la imagen que subimos, con su extension original 
         
         return $target;
+    }
+
+    public function editNotImg($idcurso, $curso, $descripcion, $duracion, $idarea){
+        $sentencia = $this->getDb()->prepare("UPDATE cursos SET curso = ?, descripcion = ?, duracion = ? , id_area_fk = ? 
+        WHERE id_curso = ?");
+        return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $idcurso]);
     }
 
     //Edita un curso 
