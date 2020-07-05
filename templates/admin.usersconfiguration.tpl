@@ -8,12 +8,16 @@
         </div>
         <div class="col-12">
             {foreach $usersadmin as $user}
+                {if $user->id_usuario != $iduser}
+                    
+                
                         <li class="list-group-item">
                         <p>{$user->username}
                         <a class="btn btn-light text-danger float-right" href="deleteuser/{$user->id_usuario}" role="button">Eliminar</a>
                         <a class="btn btn-light text-danger float-right" href="offpermission/{$user->id_usuario}" role="button">Off administrador</a>
                         </p>
                         </li>
+                {/if}
             {/foreach}
         </div>
     </div>
