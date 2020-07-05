@@ -23,19 +23,20 @@ function loadComments() {
     fetch('api/courses/'+id+'/comments')
     .then(response => response.json())
     .then(comentarios => {
-        app.comments = comentarios; //arreglo de comentarios
+        app.comments = comentarios;//arreglo de comentarios
         let suma=0;
-        let contador=0;
+        let contador=1;
 
         for (let comentario of comentarios){
 
-            let score= ~~comentario.puntuacion;
+            let score= parseInt(comentario.puntuacion);
             suma+=score;
-            contador++; 
+            contador=comentarios.length;
+             
         }
         let promedio=(suma/contador).toFixed(2);
         app.promedio=promedio;
-
+    
     })
     .catch(error =>console.log(error));
 }

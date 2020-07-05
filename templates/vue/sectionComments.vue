@@ -7,7 +7,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
       <h4 class="mb-0">Comentarios</h4>
         <span>
-          Puntuacion promedio: {{~~promedio}}
+          Puntuacion promedio: {{promedio}}
         </span>
     </div>
     
