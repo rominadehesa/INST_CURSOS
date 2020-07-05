@@ -5,7 +5,7 @@ let admin = document.getElementById("admin").value;
 let app = new Vue({
     el:"#app-comments",
     data: { 
-        promedio:0,
+        promedio: 0,
         isadmin: admin,
         comments:[]
     },
@@ -26,9 +26,10 @@ function loadComments() {
         app.comments = comentarios; //arreglo de comentarios
         let suma=0;
         let contador=0;
+
         for (let comentario of comentarios){
 
-            let score= parseInt(comentario.puntuacion);
+            let score= ~~comentario.puntuacion;
             suma+=score;
             contador++; 
         }
