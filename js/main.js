@@ -63,8 +63,11 @@ function addComment(){
         "id_usuario_fk": user,
         "id_curso_fk": idcurso
     }
-    console.log(info); 
-
+    if(comentario == " " || puntaje == " "){
+        alert("Hay campos vacios");
+        return false;
+    } 
+    else{
     fetch('api/courses/'+idCurso+'/comment', { 
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -78,6 +81,7 @@ function addComment(){
         loadComments();
     })
     .catch(error =>console.log(error));
+    }
 }
 
 
