@@ -13,6 +13,10 @@
                     <label for="exampleInputPassword1">Contraseña</label>
                     <input type="password" name="contraseña" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Reescriba su contraseña</label>
+                    <input type="password" name="r-contraseña" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
                 {if $error}
                     <div class="alert alert-danger">
                         {$error}

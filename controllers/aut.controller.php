@@ -46,12 +46,17 @@
         public function VerifyRegistry(){
             $usuario = $_POST['usuario'];
             $contraseña = $_POST['contraseña'];
-            
+            $xcontraseña = $_POST['r-contraseña'];
 
             //chequear que el nombre del usuario no exista
             $user = $this->model->getUser($usuario);
             if ($user){
                 $this->view->ViewFormRegistry('Usuario ya existente');
+                die();
+            }
+
+            if ($contraseña != $xcontraseña){
+                $this->view->ViewFormRegistry('Las contraseñas no son iguales');
                 die();
             }
 
