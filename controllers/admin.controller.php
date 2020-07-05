@@ -1,7 +1,6 @@
 <?php
 //Controllador para el Administrador
     require_once 'views/admin.view.php';
-    require_once 'views/courses.view.php';
     require_once 'models/areas.model.php'; 
     require_once 'models/courses.model.php';
     require_once 'models/users.model.php';
@@ -14,14 +13,12 @@
         private $modelCourses;
         private $modelUsers; 
         private $view; 
-        private $viewCourses;
 
         public function __construct(){
             $this->modelAreas = new AreasModel;
             $this->modelCourses = new CoursesModel;
             $this->modelUsers = new UserModel;
             $this->view = new AdminView;
-            $this->viewCourses = new CoursesView;
             HelperAuth::checkUserLoggedAdmin(); // antes de ejecutar las funciones de este controlador, va a verificar que el usuario este logueado 
         }
 
@@ -49,7 +46,6 @@
             else {
                 $this->view->viewFormArea('Complete todos los campos');
             }
-            
         }
 
         //eliminar area

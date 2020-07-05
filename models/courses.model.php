@@ -48,7 +48,7 @@
         $sentencia = $this->getDb()->prepare("INSERT INTO cursos(curso, descripcion, duracion, id_area_fk, imagen) VALUES (?, ?, ?, ?, ?)");
         return $sentencia->execute([$curso, $descripcion, $duracion, $idarea, $pathImg]);
     }
-    
+    //funcion para editar un curso
     public function edit($idcurso, $curso, $descripcion, $duracion, $idarea, $imagen = null, $imgname = null){
         $pathImg=null; 
         if ($imagen)
@@ -62,11 +62,12 @@
     private function uploadImage($imagen, $imgname){
         $target = 'upload/courses/'. uniqid("", true) . "." 
         . strtolower(pathinfo($imgname, PATHINFO_EXTENSION));
-
         move_uploaded_file($imagen, $target); 
+        //funcion para nombrar temporalmente la imagen que subimos, con su extension original 
         
         return $target;
     }
+
     //Edita un curso 
     
     public function deleteImagen($id){

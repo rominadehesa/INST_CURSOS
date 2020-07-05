@@ -54,7 +54,7 @@
                 $this->view->ViewFormRegistry('Usuario ya existente');
                 die();
             }
-
+            //if para chequear que las contraseñas sean iguales
             if ($contraseña != $xcontraseña){
                 $this->view->ViewFormRegistry('Las contraseñas no son iguales');
                 die();

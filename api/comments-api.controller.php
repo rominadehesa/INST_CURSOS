@@ -1,6 +1,5 @@
 <?php
     require_once 'models/comments.model.php';
-    require_once 'models/users.model.php';
     require_once 'api/api.view.php';
     require_once 'helpers/auth.helper.php';
 
@@ -8,20 +7,18 @@
         private $model;
         private $view;
         private $data;
-        private $modelUser;
 
         public function __construct(){
             $this->model = new CommentsModel();
             $this->view= new APIview();
             $this->data = file_get_contents("php://input");
-            $this->modelUser = new UserModel;
             
         }
 
         public function getData() {
             return json_decode($this->data);
         }
-        
+        //funcion para postear un comentario
         public function addComment($params = []) {
             // devuelve el objeto JSON enviado por POST     
             $body = $this->getData();
@@ -39,35 +36,14 @@
             $this->view->response("No se puedo agregar el comentario", 500);
             }
         }
-
-        /*public  function getIdUser(){
-            $username = HelperAuth::userLogged();
-            $user = $this->modelUser->getUser($username); 
-            return $user->id_usuario;
-        }*/
-    
+        //traemos informacion sobre los comentarios y el usuario que hace cada comentario
+        //pasamos por parametros el id del curso
         public function getComments($params = []){
             $id = $params[':ID'];
             $comentarios=$this->model->getAll($id);
-            //var_dump($areas); 
             $this->view->response($comentarios, 200);
         }
-
-        /*public function getAverage($params = []){
-            $id = $params[':ID'];
-            $comentarios=$this->model->getAll($id);
-            $suma = 0; 
-            $contador = 0;
-            foreach($comentarios as $comment){
-                $suma += $comment->puntuacion; 
-                $contador ++; 
-            }
-
-            $promedio = $suma/$contador;
-            //var_dump($promedio);
-            return $promedio;
-        }*/
-
+        //funcion para borrar comentario
         public function deleteComment($params = []){
             $id = $params[':ID'];
             $comentario = $this->model->get($id);
