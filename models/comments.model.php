@@ -7,8 +7,9 @@
     public function getAll($id){
         $sentencia = $this->getDb()->prepare("SELECT usuarios.username, comentarios.id_comentario, comentarios.comentario, 
         comentarios.puntuacion, comentarios.id_usuario_fk, comentarios.id_curso_fk 
-        FROM comentarios JOIN usuarios JOIN cursos ON 
-        comentarios.id_usuario_fk = usuarios.id_usuario WHERE id_curso = ?"); 
+        FROM cursos JOIN usuarios JOIN comentarios 
+        ON comentarios.id_usuario_fk = usuarios.id_usuario 
+        && comentarios.id_curso_fk = cursos.id_curso WHERE cursos.id_curso = ?"); 
         $sentencia->execute([$id]);
         $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ); 
         return $comentarios;

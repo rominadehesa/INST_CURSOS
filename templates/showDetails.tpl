@@ -39,7 +39,8 @@
 
                 
                 {if $session}
-                    <span class="badge badge-success">{$username}</span>  <input id="comentario" type="text" size="100"  placeholder="Deje su comentario">
+                    <li class="list-group-item list-group-item-light text-dark">
+                    <span class="badge badge-success">{$username}</span>  <input id="comentario" type="text" size="95"  placeholder="Deje su comentario">
                     <label>Puntaje</label>
                     <select id="puntuacion">
                         <option value="1">1</option>
@@ -49,7 +50,7 @@
                         <option value="5">5</option>
                     </select>
                     
-                    <input class="btn btn-link" type="submit" value="Comentar">
+                    <input class="btn btn-link" type="submit" value="Comentar"></li>
                    
                 {else}
                 <p>Para comentar, debe resgistrarse aqui - 
