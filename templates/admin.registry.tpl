@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Reescriba su contraseña</label>
-                    <input type="password" name="r-contraseña" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name="r-contraseña" class="form-control" id="exampleInputPassword2" placeholder="Password">
                 </div>
                 {if $error}
                     <div class="alert alert-danger">
