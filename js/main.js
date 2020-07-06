@@ -17,6 +17,7 @@ let app = new Vue({
 });
 
 loadComments(); //al cargar la pagina se muestran todos los comentarios
+setInterval(loadComments, 5000); //se recargan los comentarios cada 5 segundos
 
 function loadComments() {
     let id= document.querySelector("#idcurso").value; //recuperamos el id del curso
