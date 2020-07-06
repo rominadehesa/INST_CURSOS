@@ -6,7 +6,7 @@
     //Trae todos los cursos por area
     public function getCoursesOfArea($id){
         $sentencia = $this->getDb()->prepare("SELECT areas.area AS area, cursos.curso, 
-        cursos.descripcion, cursos.duracion, cursos.id_curso FROM cursos INNER JOIN areas 
+        cursos.descripcion, cursos.duracion, cursos.id_curso, cursos.imagen FROM cursos INNER JOIN areas 
         ON cursos.id_area_fk = areas.id_area WHERE areas.id_area = ?"); 
         $sentencia->execute([$id]);
         $cursos = $sentencia->fetchAll(PDO::FETCH_OBJ); 
@@ -17,7 +17,7 @@
     public function getAllCourses(){
 
         $sentencia = $this->getDb()->prepare("SELECT areas.area AS area, cursos.curso,
-         cursos.descripcion, cursos.duracion, cursos.id_curso FROM cursos 
+         cursos.descripcion, cursos.duracion, cursos.id_curso, cursos.imagen FROM cursos 
          INNER JOIN areas ON cursos.id_area_fk = areas.id_area"); 
         $sentencia->execute();
         $cursos = $sentencia->fetchAll(PDO::FETCH_OBJ); 

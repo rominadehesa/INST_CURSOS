@@ -35,7 +35,7 @@
                 <div>
                 
                 {if $curso->imagen}
-                   <img src="./{$curso->imagen}"/> 
+                   <img src="./{$curso->imagen}" width="304" height="236"/> 
                    <a href="deleteimg/{$curso->id_curso}" class="btn btn-primary">Eliminar imagen</a>
                 {/if}
                 
