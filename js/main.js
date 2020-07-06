@@ -33,20 +33,7 @@ function loadComments() {
     }).then(comentarios => {
         if(comentarios != null){
         app.comments = comentarios;//arreglo de comentarios
-        //promedio
-        let suma=0;
-        let contador=0;
-        for (let comentario of comentarios){
-            suma= suma + parseInt(comentario.puntuacion);
-            contador ++;
-        }
-        let promedio=(suma/contador).toFixed(2);
-        app.promedio=promedio;
-
-        if (contador == 0){
-            app.promedio = 0;
-        }
-        app.tamanio = contador;
+        promedio(comentarios);
         }
     }).catch(error => console.log(error));
 }
@@ -107,4 +94,21 @@ function deleteComment(id) {
         loadComments();
     })
     .catch(error =>console.log(error));
+}
+
+//calculamos el promedio
+function promedio(comentarios){
+    let suma=0;
+    let contador=0;
+    for (let comentario of comentarios){
+        suma= suma + parseInt(comentario.puntuacion);
+        contador ++;
+    }
+    let promedio=(suma/contador).toFixed(2);
+    app.promedio=promedio;
+
+    if (contador == 0){
+        app.promedio = 0;
+    }
+    app.tamanio = contador;
 }
