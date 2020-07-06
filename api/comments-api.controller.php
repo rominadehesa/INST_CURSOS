@@ -2,16 +2,19 @@
     require_once 'models/comments.model.php';
     require_once 'api/api.view.php';
     require_once 'helpers/auth.helper.php';
+    require_once 'models/courses.model.php'; 
 
     class CommentsApiController{
         private $model;
         private $view;
         private $data;
+        private $modelCourses;
 
         public function __construct(){
             $this->model = new CommentsModel();
             $this->view= new APIview();
             $this->data = file_get_contents("php://input");
+            $this->modelCourses = new CoursesModel;
             
         }
 
@@ -40,9 +43,20 @@
         //pasamos por parametros el id del curso
         public function getComments($params = []){
             $id = $params[':ID'];
+            $curso = $this->modelCourses->getCourse($id);
             $comentarios=$this->model->getAll($id);
-            $this->view->response($comentarios, 200);
+
+            if(empty($curso)){
+                $this->view->response("No hay curso con el id {$id}", 404);
+            }
+            else if(empty($comentarios)){
+            $this->view->response("No hay comentarios", 204);
+            }
+            else {
+                $this->view->response($comentarios, 200);
+            }
         }
+
         //funcion para borrar comentario
         public function deleteComment($params = []){
             $id = $params[':ID'];

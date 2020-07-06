@@ -7,6 +7,7 @@ let app = new Vue({
     data: { 
         promedio: 0,
         isadmin: admin,
+        tamanio: 0,
         comments:[]
     },
     methods: {
@@ -19,15 +20,22 @@ let app = new Vue({
 loadComments(); //al cargar la pagina se muestran todos los comentarios
 setInterval(loadComments, 5000); //se recargan los comentarios cada 5 segundos
 
+//Funcion para traer los comentarios por curso
 function loadComments() {
     let id= document.querySelector("#idcurso").value; //recuperamos el id del curso
     fetch('api/courses/'+id+'/comments')
-    .then(response => response.json())
-    .then(comentarios => {
+    .then(response => {
+        if(response.status == 204){
+            app.comments = null;
+        } else {
+            return response.json();
+        }
+    }).then(comentarios => {
+        if(comentarios != null){
         app.comments = comentarios;//arreglo de comentarios
+        //promedio
         let suma=0;
         let contador=0;
-
         for (let comentario of comentarios){
             suma= suma + parseInt(comentario.puntuacion);
             contador ++;
@@ -38,9 +46,9 @@ function loadComments() {
         if (contador == 0){
             app.promedio = 0;
         }
-    
-    })
-    .catch(error =>console.log(error));
+        app.tamanio = contador;
+        }
+    }).catch(error => console.log(error));
 }
 
 document.querySelector("#form-comentario")
@@ -86,7 +94,7 @@ function addComment(){
     }
 }
 
-
+//funcion para eliminar un comentario
 function deleteComment(id) {
     fetch('api/comments/'+id, { 
         method: 'DELETE',

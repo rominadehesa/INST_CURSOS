@@ -5,7 +5,7 @@
   <div class="card">
 
     <div class="card-header d-flex justify-content-between align-items-center" >
-      <h5 class="mb-0">{{comments.length}} <img src="https://img.icons8.com/metro/26/000000/topic.png"/></h5>
+      <h5 class="mb-0">{{tamanio}} <img src="https://img.icons8.com/metro/26/000000/topic.png"/></h5>
         <span>
           <h5>{{promedio}} <img src="https://img.icons8.com/color/26/000000/filled-star.png"/></h5>
         </span>
