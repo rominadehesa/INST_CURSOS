@@ -138,14 +138,13 @@
             $cursos = $this->modelCourses->getCourse($idcurso);
             $imagen = $_FILES['input_name']['error'];
 
-            //si no edita la imagen, deja la que estaba 
-            if ($imagen == 4){
+            //si no edita la imagen, deja la que estaba
+            if (empty($curso) || empty($descripcion) || empty($duracion)){
+                $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
+            } 
+            else if ($imagen == 4){
                 $this->modelCourses->editNotImg($idcurso, $curso, $descripcion, $duracion, $idarea);
                 header('Location: ' . BASE_URL . "administer");
-            }
-
-            else if (empty($curso) || empty($descripcion) || empty($duracion)){
-                $this->view->viewFormEditCourse($areas, $cursos, "Campos incompletos");
             }
             else{
                 if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){

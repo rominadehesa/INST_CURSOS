@@ -21,7 +21,7 @@
         
         
         {if ($detalle->imagen)}
-            <li class="list-group-item text-white"> <img src="./{$detalle->imagen}"/>
+            <li class="list-group-item text-white"> <img src="./{$detalle->imagen}" width="500" height="236"/>
         {/if}
         </li>
         </div>
