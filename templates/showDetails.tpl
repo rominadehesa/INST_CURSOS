@@ -19,6 +19,7 @@
         <li class="list-group-item list-group-item-ligth">
         Duracion: {$detalle->duracion} meses</li>
         
+        
         {if ($detalle->imagen)}
             <li class="list-group-item text-white"> <img src="./{$detalle->imagen}"/>
         {/if}
@@ -38,7 +39,7 @@
 
                 
                 {if $session}
-                    <span class="badge badge-dark">{$username}</span>  <input id="comentario" type="text" size="30" maxlength="30" placeholder="Deje su comentario">
+                    <span class="badge badge-success">{$username}</span>  <input id="comentario" type="text" size="100"  placeholder="Deje su comentario">
                     <label>Puntaje</label>
                     <select id="puntuacion">
                         <option value="1">1</option>
