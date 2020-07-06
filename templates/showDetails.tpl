@@ -53,8 +53,8 @@
                     <input class="btn btn-link" type="submit" value="Comentar"></li>
                    
                 {else}
-                <p>Para comentar, debe resgistrarse aqui - 
-                <a href="login">Resgistrarme</a></p>
+                <p>Para comentar, debe registrarse aqui - 
+                <a href="login">Registrarme</a></p>
                 {/if}
             </form>
         </div>
