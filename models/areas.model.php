@@ -13,7 +13,7 @@
     }
     //trae una area
     public function getArea($id){
-        $sentencia = $this->getDb()->prepare("SELECT id_area, area FROM `areas` WHERE id_area = ?");
+        $sentencia = $this->getDb()->prepare("SELECT id_area, area FROM areas WHERE id_area = ?");
         $sentencia->execute([$id]);
         $areas = $sentencia->fetch(PDO::FETCH_OBJ); 
         

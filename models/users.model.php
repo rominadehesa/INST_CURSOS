@@ -8,13 +8,13 @@ class UserModel  extends Model{
         $sentencia->execute([$usuario]);
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
-
+    //trae usuarios administradores
     public function getAdministrators($permission){
         $sentencia = $this->getDb()->prepare("SELECT * FROM usuarios WHERE permission = ?");
         $sentencia->execute([$permission]);
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
-
+    //trae usuarios no administradores
     public function getNotAdministrators($notpermission){
         $sentencia = $this->getDb()->prepare("SELECT * FROM usuarios WHERE permission = ?");
         $sentencia->execute([$notpermission]);
@@ -34,13 +34,13 @@ class UserModel  extends Model{
         $sentencia->execute([$id_usuario]);
     }
 
-    //funcion que da permiso al usuario para que sea administrador 
+    //funcion que quita permiso al usuario para que sea administrador 
 
     public function offPermission($id){
         $sentencia = $this->getDb()->prepare("UPDATE usuarios SET permission = ? WHERE id_usuario = ?");
         $sentencia->execute([0, $id]);
     }
-
+    //funcion que da permiso al usuario para que sea administrador
     public function onPermission($id){
         $sentencia = $this->getDb()->prepare("UPDATE usuarios SET permission = ? WHERE id_usuario = ?");
         $sentencia->execute([1, $id]);

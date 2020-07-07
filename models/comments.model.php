@@ -8,25 +8,24 @@
         $sentencia = $this->getDb()->prepare("SELECT usuarios.username, comentarios.id_comentario, comentarios.comentario, 
         comentarios.puntuacion, comentarios.id_usuario_fk, comentarios.id_curso_fk 
         FROM cursos JOIN usuarios JOIN comentarios 
-        ON comentarios.id_usuario_fk = usuarios.id_usuario 
-        && comentarios.id_curso_fk = cursos.id_curso WHERE cursos.id_curso = ?"); 
+        ON comentarios.id_usuario_fk = usuarios.id_usuario && comentarios.id_curso_fk = cursos.id_curso WHERE cursos.id_curso = ?"); 
         $sentencia->execute([$id]);
         $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ); 
         return $comentarios;
     }
-
+    //trae un comentario
     public function get($id){
         $sentencia = $this->getDb()->prepare("SELECT comentario FROM comentarios WHERE id_comentario = ?");
         $sentencia->execute([$id]);
         $comentario = $sentencia->fetch(PDO::FETCH_OBJ); 
         return $comentario;
     }
-
+    //borra un comentario
     public function deleteComment($id){
         $sentencia = $this->getDb()->prepare("DELETE FROM comentarios WHERE id_comentario = ?");
         $sentencia->execute([$id]);
     }
-
+    //inserta un comentario
     public function insert($comentario, $puntuacion, $id_usuario_fk, $id_curso_fk){
         $sentencia = $this->getDb()->prepare('INSERT INTO comentarios(comentario, puntuacion, id_usuario_fk, id_curso_fk) VALUES (?, ?, ?, ?)');
         return $sentencia->execute([$comentario, $puntuacion, $id_usuario_fk, $id_curso_fk]);
